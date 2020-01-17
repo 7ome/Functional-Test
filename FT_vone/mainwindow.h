@@ -7,6 +7,7 @@
 #include <QSerialPortInfo>
 #include <QThread>
 #include <QTimer>
+#include <QTime>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,7 +20,9 @@ public:
     static void usleep(unsigned long usecs){QThread::usleep(usecs);}
     static void msleep(unsigned long msecs){QThread::msleep(msecs);}
     static void sleep(unsigned long secs){QThread::sleep(secs);}
+
 };
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -28,12 +31,14 @@ public:
     QSerialPort serial;
     QString datas;
     QStringList list;
+    const char *gline[30];
     bool check;
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
-
+    void delay();
     void sendcommand(const char *gCode);
     void on_pushButton_clicked();
     void on_HomeButton_clicked();

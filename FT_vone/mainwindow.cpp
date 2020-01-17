@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
 ui->setupUi(this);
+
 }
 
 MainWindow::~MainWindow()
@@ -46,12 +47,13 @@ void MainWindow::on_pushButton_clicked()
 
      //check printer error
       datas = serial.readLine();
-     if(datas.contains("ok", Qt::CaseInsensitive)){
-         qDebug("si si si si");
+
+     if(datas.contains("ok", Qt::CaseInsensitive)){         
+
+         qDebug("ok");
          check = true;
-     }
-     else{
-         qDebug("no bueno");
+         }
+     else{    
 
      }
      qDebug()<<datas<<endl;
@@ -75,13 +77,16 @@ void MainWindow::on_ExtractButton_clicked()
 { 
 //  sendcommand("G28X\n");
 }
-
-void MainWindow::sendcommand(const char * gCode){
-serial.write(gCode);
-int n = 0;
-while(n < 100){
-    n++;
+void MainWindow:: delay()
+{
+    QTime dieTime= QTime::currentTime().addSecs(1);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
+void MainWindow::sendcommand(const char * gCode){
+
+serial.write(gCode);
+
 }
 
 
