@@ -20,7 +20,7 @@
    <property name="autoFillBackground">
     <bool>false</bool>
    </property>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="ConnectButton">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Connect</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="textBrowser">
@@ -78,7 +78,11 @@
      <number>5</number>
     </property>
     <property name="currentIndex">
+<<<<<<< Updated upstream
      <number>0</number>
+=======
+     <number>4</number>
+>>>>>>> Stashed changes
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QPushButton" name="BridgeButton">

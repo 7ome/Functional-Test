@@ -29,13 +29,22 @@ public:
     QString datas;
     QStringList list;
     bool check;
+<<<<<<< Updated upstream
+=======
+    bool extractButton_clicked = false;
+
+>>>>>>> Stashed changes
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
+<<<<<<< Updated upstream
 
+=======
+    void delay(int sec);
+>>>>>>> Stashed changes
     void sendcommand(const char *gCode);
-    void on_pushButton_clicked();
+    void on_ConnectButton_clicked();
     void on_HomeButton_clicked();
     void on_BridgeButton_clicked();
     void on_DrillButton_clicked();

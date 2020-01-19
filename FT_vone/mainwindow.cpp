@@ -4,12 +4,16 @@
 #include <iostream>
 
 using namespace std;
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget* parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+<<<<<<< Updated upstream
 
 ui->setupUi(this);
+=======
+    ui->setupUi(this);
+>>>>>>> Stashed changes
 }
 
 MainWindow::~MainWindow()
@@ -18,16 +22,19 @@ MainWindow::~MainWindow()
     serial.close();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_ConnectButton_clicked()
 {
+    QStringList str;
+    QString sNumber;
     //Scans all available ports but filters and set only the FTDI(V-one)com
     //Will change to v1 serial number later
-    foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
+    foreach (const QSerialPortInfo& info, QSerialPortInfo::availablePorts()) {
 
-      //Filter FTDI
-        if(info.manufacturer()=="FTDI"){
+        //Filter FTDI
+        if (info.manufacturer() == "FTDI") {
             qDebug() << "Name : " << info.portName();
             qDebug() << "Description : " << info.description();
+<<<<<<< Updated upstream
            qDebug() << "Manufacturer: " << info.manufacturer();
            ui->textBrowser->setText("Connected to "+info.portName());
     //Set and open coms
@@ -69,12 +76,56 @@ datas.clear();
     });
 }
 
+=======
+            qDebug() << "Manufacturer: " << info.manufacturer();
+            ui->textBrowser->setText("Connected to " + info.portName());
+            //Set and open serial coms
+            serial.setPortName(info.portName());
+            serial.setBaudRate(250000);
+            serial.setDataBits(QSerialPort::Data8);
+            serial.setParity(QSerialPort::NoParity);
+            serial.setStopBits(QSerialPort::OneStop);
+            serial.setFlowControl(QSerialPort::NoFlowControl);
+            serial.open(QIODevice::ReadWrite);
+
+            //this is ALWAYS called when datas are received
+            QObject::connect(&serial, &QSerialPort::readyRead, [&] {
+
+                //check printer error
+                datas = serial.readAll();
+                //Split parts with "\n" and ignore empty strings
+                str = datas.split(("\n"), QString::SkipEmptyParts);
+
+                //Print strings per line in console
+                for (int strlength = 0; strlength < str.length(); strlength++) {
+                    std::cout << str.at(strlength).toStdString() << std::endl;
+                }
+
+                if (extractButton_clicked) {
+                  sNumber = str.startsWith("M504");
+
+                    ui->readtextbox->setText("" + sNumber);
+                    extractButton_clicked = false;
+                }
+                return true;
+            });
+            datas.clear();
+            //this is called when serial com error occurs
+            QObject::connect(&serial, static_cast<void (QSerialPort::*)(QSerialPort::SerialPortError)>(&QSerialPort::error),
+                [&](QSerialPort::SerialPortError error) {
+                    qDebug() << "An error occured: " << error;
+                    //return qApp->quit();
+                });
+        }
+>>>>>>> Stashed changes
     }
 }
 void MainWindow::on_ExtractButton_clicked()
-{ 
-//  sendcommand("G28X\n");
+{
+    sendcommand("M520\n");
+    extractButton_clicked = true;
 }
+<<<<<<< Updated upstream
 
 void MainWindow::sendcommand(const char * gCode){
 serial.write(gCode);
@@ -83,8 +134,16 @@ while(n < 100){
     n++;
     //checking branches on github
 }
+=======
+void MainWindow::delay(int sec)
+{
+    QTime dieTime = QTime::currentTime().addSecs(sec);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
+void MainWindow::sendcommand(const char* gCode)
+{
 
-
-
-
+    serial.write(gCode);
+>>>>>>> Stashed changes
+}
