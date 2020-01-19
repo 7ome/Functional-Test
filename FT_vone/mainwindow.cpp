@@ -44,20 +44,24 @@ void MainWindow::on_pushButton_clicked()
     //this is called when datas are received
  QObject::connect(&serial, &QSerialPort::readyRead, [&]
     {
+     QStringList str;
+     QString sNumber;
+     datas = serial.readAll();
+                     //Split parts with "\n" and ignore empty strings
+                     str = datas.split(("\n"), QString::SkipEmptyParts);
 
-     //check printer error
-      datas = serial.readLine();
+                     //Print strings per line in console
+                     for (int strlength = 0; strlength < str.length(); strlength++) {
+                         std::cout << str.at(strlength).toStdString() << std::endl;
+                     }
 
-     if(datas.contains("ok", Qt::CaseInsensitive)){         
+                     if (extractButton_clicked) {
+                       //sNumber = str.startsWith("M504");
 
-         qDebug("ok");
-         check = true;
-         }
-     else{    
-
-     }
-     qDebug()<<datas<<endl;
-        return true;
+                         ui->readtextbox->setText("" + datas);
+                         extractButton_clicked = false;
+                     }
+                     return true;
          }
     );
 datas.clear();
@@ -75,7 +79,10 @@ datas.clear();
 }
 void MainWindow::on_ExtractButton_clicked()
 { 
-//  sendcommand("G28X\n");
+    sendcommand("M520\n");
+
+    extractButton_clicked = true;
+    delay();
 }
 void MainWindow:: delay()
 {

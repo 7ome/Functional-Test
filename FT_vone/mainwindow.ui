@@ -30,7 +30,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>PushButton</string>
+     <string>Connect</string>
     </property>
    </widget>
    <widget class="QTextBrowser" name="textBrowser">

@@ -33,6 +33,7 @@ public:
     QStringList list;
     const char *gline[30];
     bool check;
+    bool extractButton_clicked;
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

@@ -18,17 +18,17 @@ void MainWindow::on_SpeedXButton_clicked()
 void MainWindow::on_SpinEButton_clicked()
 {
 
-    sendcommand("G01 E5 F180\n");
-    //delay();
-    //sendcommand("G04 P1\n");
-   // for (int e=0; e<10;e++){
-   //     sendcommand("G01 E4.5 F180\n");
-   //     sendcommand("G01 E5.5 F180\n");
+   sendcommand("G01 E0 F180\n");
+    sendcommand("G04 P1\n");
+    for (int e=0; e<10;e++){
+        sendcommand("G01 E4.5 F180\n");
+        sendcommand("G01 E5.5 F180\n");
 
-   // }
-   //  sendcommand("G04 P1\n");
-   //  sendcommand("G01 E0 F180\n");
-   //  sendcommand("M18\n");
+    }
+    delay();
+     sendcommand("G04 P1\n");
+     sendcommand("G01 E0 F180\n");
+     sendcommand("M18\n");
 
 }
 void MainWindow::on_HomeZDButton_clicked()
