@@ -8,6 +8,7 @@
 #include <QThread>
 #include <QTimer>
 #include <QTime>
+#include <QtSql>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

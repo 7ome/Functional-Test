@@ -25,5 +25,11 @@ void MainWindow::on_ProbeButton_clicked()
 
 void MainWindow::on_DatabaseButton_clicked()
 {
+    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("Voltera");
+    db.setDatabaseName("V1DB");
+    db.setUserName("Banana");
+    db.setPassword("12345");
+        bool ok = db.open();
       ui->stackedWidget->setCurrentIndex(4);
 }

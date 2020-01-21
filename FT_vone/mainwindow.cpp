@@ -18,7 +18,12 @@ MainWindow::~MainWindow()
     delete ui;
     serial.close();
 }
-
+void MainWindow:: delay()
+{
+    QTime dieTime= QTime::currentTime().addSecs(1);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
 void MainWindow::on_pushButton_clicked()
 {
     //Scans all available ports but filters and set only the FTDI(V-one)com
@@ -57,7 +62,7 @@ void MainWindow::on_pushButton_clicked()
 
                      if (extractButton_clicked) {
                        //sNumber = str.startsWith("M504");
-
+                            delay();
                          ui->readtextbox->setText("" + datas);
                          extractButton_clicked = false;
                      }
@@ -77,22 +82,13 @@ datas.clear();
 
     }
 }
-void MainWindow::on_ExtractButton_clicked()
-{ 
-    sendcommand("M520\n");
 
-    extractButton_clicked = true;
-    delay();
-}
-void MainWindow:: delay()
-{
-    QTime dieTime= QTime::currentTime().addSecs(1);
-    while (QTime::currentTime() < dieTime)
-        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
-}
+
 void MainWindow::sendcommand(const char * gCode){
 
 serial.write(gCode);
+
+
 
 }
 
