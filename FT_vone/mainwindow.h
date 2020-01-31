@@ -43,11 +43,13 @@ private slots:
     void delay();
     void sendcommand(const char *gCode);
     void on_pushButton_clicked();
-    void on_HomeButton_clicked();
+    void on_MenuButton_clicked();
     void on_BridgeButton_clicked();
     void on_DrillButton_clicked();
     void on_ProbeButton_clicked();
     void on_DatabaseButton_clicked();
+    void on_HomeButton_clicked();
+    void on_gCodeButton_clicked();
  //Bridge
     void on_HomeXButton_clicked();
     void on_ExtractButton_clicked();
@@ -55,14 +57,11 @@ private slots:
     void on_SpinEButton_clicked();
     void on_HomeZDButton_clicked();
     void on_HomeZUButton_clicked();
-
     void on_SetDrillButton_clicked();
-
     void on_runoutButton_clicked();
-
     void on_SpinMotorButton_clicked();
-
     void on_MotorSpeedSlider_actionTriggered(int action);
+    void on_gCodeLine_returnPressed();
 
 private:
     Ui::MainWindow *ui;

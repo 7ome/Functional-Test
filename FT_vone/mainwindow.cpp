@@ -29,11 +29,10 @@ void MainWindow::on_pushButton_clicked()
     //Scans all available ports but filters and set only the FTDI(V-one)com
     //Will change to v1 serial number later
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
-
       //Filter FTDI
         if(info.manufacturer()=="FTDI"){
-            qDebug() << "Name : " << info.portName();
-            qDebug() << "Description : " << info.description();
+           qDebug() << "Name : " << info.portName();
+           qDebug() << "Description : " << info.description();
            qDebug() << "Manufacturer: " << info.manufacturer();
            ui->textBrowser->setText("Connected to "+info.portName());
     //Set and open coms
@@ -49,6 +48,7 @@ void MainWindow::on_pushButton_clicked()
     //this is called when datas are received
  QObject::connect(&serial, &QSerialPort::readyRead, [&]
     {
+
      QStringList str;
      QString sNumber;
      datas = serial.readAll();
@@ -59,7 +59,6 @@ void MainWindow::on_pushButton_clicked()
                      for (int strlength = 0; strlength < str.length(); strlength++) {
                          std::cout << str.at(strlength).toStdString() << std::endl;
                      }
-
                      if (extractButton_clicked) {
                        //sNumber = str.startsWith("M504");
                             delay();
@@ -67,6 +66,7 @@ void MainWindow::on_pushButton_clicked()
                          extractButton_clicked = false;
                      }
                      return true;
+
          }
     );
 datas.clear();
@@ -88,10 +88,27 @@ void MainWindow::sendcommand(const char * gCode){
 
 serial.write(gCode);
 
+}
 
+void MainWindow::on_HomeButton_clicked()
+{
+    sendcommand("G28\n");
+}
 
+void MainWindow::on_gCodeButton_clicked()
+{
+    QString text;
+//char consolein;
+//cout<<"enter gCode commands:"<<endl;
+//cin>>consolein;
+//sendcommand(consolein+"\n");
 }
 
 
+void MainWindow::on_gCodeLine_returnPressed()
+{
 
+qDebug("I received");
+    //sendcommand("");
 
+}

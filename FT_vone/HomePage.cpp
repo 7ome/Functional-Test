@@ -3,7 +3,7 @@
 
 
 
-void MainWindow::on_HomeButton_clicked()
+void MainWindow::on_MenuButton_clicked()
 {
    ui->stackedWidget->setCurrentIndex(0);
 }
