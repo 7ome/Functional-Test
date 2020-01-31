@@ -35,6 +35,7 @@ public:
     const char *gline[30];
     bool check;
     bool extractButton_clicked;
+    int motorspeed;
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -59,8 +60,9 @@ private slots:
     void on_SetDrillButton_clicked();
     void on_runoutButton_clicked();
     void on_SpinMotorButton_clicked();
-    void on_MotorSpeedSlider_actionTriggered(int action);
     void on_LineEdit_returnPressed();
+
+    void on_MotorSpeedSlider_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;

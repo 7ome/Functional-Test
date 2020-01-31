@@ -26,7 +26,7 @@
       <x>20</x>
       <y>10</y>
       <width>101</width>
-      <height>41</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="text">
@@ -301,8 +301,14 @@
       <property name="singleStep">
        <number>10</number>
       </property>
+      <property name="sliderPosition">
+       <number>0</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="invertedControls">
+       <bool>false</bool>
       </property>
      </widget>
      <widget class="QPushButton" name="SpinMotorButton">
@@ -476,7 +482,7 @@
      <rect>
       <x>10</x>
       <y>530</y>
-      <width>761</width>
+      <width>771</width>
       <height>31</height>
      </rect>
     </property>

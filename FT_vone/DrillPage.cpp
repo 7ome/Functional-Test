@@ -15,8 +15,8 @@ void MainWindow::on_SetDrillButton_clicked()
 void MainWindow::on_runoutButton_clicked()
 {
   sendcommand("G1 X120 Y115\n");
-       sendcommand("D110 R100\n");
-      sendcommand("D110 R75\n");
+  sendcommand("D110 R100\n");
+  sendcommand("D110 R75\n");
               sendcommand("D110 R50\n");
               sendcommand("D110 R25\n");
               sendcommand("D110 R8\n");
@@ -30,10 +30,15 @@ void MainWindow::on_runoutButton_clicked()
 
 void MainWindow::on_SpinMotorButton_clicked()
 {
-
+    while (motorspeed!=0) {
+//    sendcommand("D110 R"+motorspeed);
+//    sendcommand("\n");
+        qDebug()<<motorspeed<<endl;
+    delay(1);
+}
 }
 
-void MainWindow::on_MotorSpeedSlider_actionTriggered(int action)
+void MainWindow::on_MotorSpeedSlider_valueChanged(int value)
 {
-qDebug()<<action<<endl;
+    motorspeed = value;
 }

@@ -97,3 +97,4 @@ void MainWindow::on_LineEdit_returnPressed()
    sendcommand("\n");
    ui->LineEdit->clear();
 }
+
