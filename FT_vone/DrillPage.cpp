@@ -35,5 +35,5 @@ void MainWindow::on_SpinMotorButton_clicked()
 
 void MainWindow::on_MotorSpeedSlider_actionTriggered(int action)
 {
-
+qDebug()<<action<<endl;
 }

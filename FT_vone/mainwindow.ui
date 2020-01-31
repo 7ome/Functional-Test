@@ -39,7 +39,7 @@
       <x>130</x>
       <y>10</y>
       <width>451</width>
-      <height>41</height>
+      <height>91</height>
      </rect>
     </property>
    </widget>
@@ -78,7 +78,7 @@
      <number>5</number>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QPushButton" name="BridgeButton">
@@ -298,6 +298,9 @@
         <height>22</height>
        </rect>
       </property>
+      <property name="singleStep">
+       <number>10</number>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -455,25 +458,12 @@
      </widget>
     </widget>
    </widget>
-   <widget class="QPushButton" name="gCodeButton">
-    <property name="geometry">
-     <rect>
-      <x>670</x>
-      <y>60</y>
-      <width>71</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>gCode</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="HomeButton">
     <property name="geometry">
      <rect>
       <x>590</x>
       <y>60</y>
-      <width>71</width>
+      <width>151</width>
       <height>41</height>
      </rect>
     </property>
@@ -481,12 +471,12 @@
      <string>Home</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="gCodeLine">
+   <widget class="QLineEdit" name="LineEdit">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>520</y>
-      <width>601</width>
+      <x>10</x>
+      <y>530</y>
+      <width>761</width>
       <height>31</height>
      </rect>
     </property>

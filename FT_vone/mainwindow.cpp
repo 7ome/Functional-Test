@@ -18,9 +18,9 @@ MainWindow::~MainWindow()
     delete ui;
     serial.close();
 }
-void MainWindow:: delay()
+void MainWindow:: delay(int sec)
 {
-    QTime dieTime= QTime::currentTime().addSecs(1);
+    QTime dieTime= QTime::currentTime().addSecs(sec);
     while (QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
@@ -48,25 +48,23 @@ void MainWindow::on_pushButton_clicked()
     //this is called when datas are received
  QObject::connect(&serial, &QSerialPort::readyRead, [&]
     {
-
      QStringList str;
      QString sNumber;
      datas = serial.readAll();
                      //Split parts with "\n" and ignore empty strings
                      str = datas.split(("\n"), QString::SkipEmptyParts);
-
+                     delay(1);
                      //Print strings per line in console
                      for (int strlength = 0; strlength < str.length(); strlength++) {
                          std::cout << str.at(strlength).toStdString() << std::endl;
                      }
                      if (extractButton_clicked) {
                        //sNumber = str.startsWith("M504");
-                            delay();
+                            delay(1);
                          ui->readtextbox->setText("" + datas);
                          extractButton_clicked = false;
                      }
                      return true;
-
          }
     );
 datas.clear();
@@ -82,33 +80,20 @@ datas.clear();
 
     }
 }
-
-
 void MainWindow::sendcommand(const char * gCode){
 
 serial.write(gCode);
-
 }
-
 void MainWindow::on_HomeButton_clicked()
 {
     sendcommand("G28\n");
 }
-
-void MainWindow::on_gCodeButton_clicked()
+void MainWindow::on_LineEdit_returnPressed()
 {
-    QString text;
-//char consolein;
-//cout<<"enter gCode commands:"<<endl;
-//cin>>consolein;
-//sendcommand(consolein+"\n");
-}
+   QString cmdline =ui->LineEdit->text();
 
-
-void MainWindow::on_gCodeLine_returnPressed()
-{
-
-qDebug("I received");
-    //sendcommand("");
-
+   const char *ready = cmdline.toLatin1().toUpper().data();
+   sendcommand(ready);
+   sendcommand("\n");
+   ui->LineEdit->clear();
 }

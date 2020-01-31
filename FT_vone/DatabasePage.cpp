@@ -7,5 +7,5 @@ void MainWindow::on_ExtractButton_clicked()
 {
     sendcommand("M520\n");
     extractButton_clicked = true;
-    delay();
+    delay(1);
 }

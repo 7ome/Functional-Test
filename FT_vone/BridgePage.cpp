@@ -25,7 +25,7 @@ void MainWindow::on_SpinEButton_clicked()
         sendcommand("G01 E5.5 F180\n");
 
     }
-    delay();
+    delay(1);
      sendcommand("G04 P1\n");
      sendcommand("G01 E0 F180\n");
      sendcommand("M18\n");

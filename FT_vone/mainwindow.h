@@ -40,7 +40,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void delay();
+    void delay(int sec);
     void sendcommand(const char *gCode);
     void on_pushButton_clicked();
     void on_MenuButton_clicked();
@@ -49,7 +49,6 @@ private slots:
     void on_ProbeButton_clicked();
     void on_DatabaseButton_clicked();
     void on_HomeButton_clicked();
-    void on_gCodeButton_clicked();
  //Bridge
     void on_HomeXButton_clicked();
     void on_ExtractButton_clicked();
@@ -61,7 +60,7 @@ private slots:
     void on_runoutButton_clicked();
     void on_SpinMotorButton_clicked();
     void on_MotorSpeedSlider_actionTriggered(int action);
-    void on_gCodeLine_returnPressed();
+    void on_LineEdit_returnPressed();
 
 private:
     Ui::MainWindow *ui;
