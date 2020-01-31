@@ -64,6 +64,8 @@ private slots:
 
     void on_MotorSpeedSlider_valueChanged(int value);
 
+    void on_MotorSpeedSlider_sliderReleased();
+
 private:
     Ui::MainWindow *ui;
 };

@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
 
 ui->setupUi(this);
-
+ui->textBrowser->setText("Status: Disconnected");
 }
 
 MainWindow::~MainWindow()
@@ -34,7 +34,10 @@ void MainWindow::on_pushButton_clicked()
            qDebug() << "Name : " << info.portName();
            qDebug() << "Description : " << info.description();
            qDebug() << "Manufacturer: " << info.manufacturer();
-           ui->textBrowser->setText("Connected to "+info.portName());
+            ui->textBrowser->setText("Status: Connecting...");
+
+
+
     //Set and open coms
     serial.setPortName(info.portName());
     serial.setBaudRate(250000);
@@ -43,11 +46,13 @@ void MainWindow::on_pushButton_clicked()
     serial.setStopBits(QSerialPort::OneStop);
     serial.setFlowControl(QSerialPort::NoFlowControl);
     serial.open(QIODevice::ReadWrite);
-
+    delay(2);
+    ui->textBrowser->setText("Status: Connected");
 
     //this is called when datas are received
  QObject::connect(&serial, &QSerialPort::readyRead, [&]
     {
+
      QStringList str;
      QString sNumber;
      datas = serial.readAll();
@@ -73,8 +78,12 @@ datas.clear();
                          (&QSerialPort::error),
                          [&](QSerialPort::SerialPortError error)
     {
+
+
         qDebug() << "An error occured: " << error;
         //return qApp->quit();
+        delay(2);
+        ui->textBrowser->setText("Status: Disconnected\n");
     });
 }
 
@@ -83,6 +92,7 @@ datas.clear();
 void MainWindow::sendcommand(const char * gCode){
 
 serial.write(gCode);
+    //qDebug()<<gCode;
 }
 void MainWindow::on_HomeButton_clicked()
 {
@@ -98,3 +108,8 @@ void MainWindow::on_LineEdit_returnPressed()
    ui->LineEdit->clear();
 }
 
+
+void MainWindow::on_MotorSpeedSlider_sliderReleased()
+{
+    on_SpinMotorButton_clicked();
+}
