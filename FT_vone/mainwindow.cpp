@@ -109,7 +109,3 @@ void MainWindow::on_LineEdit_returnPressed()
 }
 
 
-void MainWindow::on_MotorSpeedSlider_sliderReleased()
-{
-    on_SpinMotorButton_clicked();
-}

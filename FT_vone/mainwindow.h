@@ -66,6 +66,10 @@ private slots:
 
     void on_MotorSpeedSlider_sliderReleased();
 
+    void on_justROButton_clicked();
+
+    void on_NoiseButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };
