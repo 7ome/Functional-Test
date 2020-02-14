@@ -40,6 +40,11 @@ public:
     bool check;
     bool extractButton_clicked;
     int motorspeed;
+    QString SerialNum = "V1-05-000-002";
+    QString SkewX       ="0.0123";
+    QString SkewY       ="0.0234";
+    QString BackslashX  ="0.0456";
+    QString BackslashY  ="0.0789";
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

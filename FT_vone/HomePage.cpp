@@ -27,20 +27,25 @@ void MainWindow::on_DatabaseButton_clicked()
 {
     QString dbpath = "C:\\Users\\Tome\\Documents\\Funtional-Test\\Database\\Batch7.db";
     QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
-    //db.setHostName("root");
-    db.setDatabaseName(dbpath);
-    //db.setUserName("Tome");
-   // db.setPassword("password");
-
+    db.setDatabaseName(dbpath);  
     db.open();
     QSqlQuery* qry = new QSqlQuery(db);
-    qry->prepare("select * from calibration");
+    qry->prepare("INSERT into UnitInfo ( Serial, SKEWX, SKEWY, BACKSLASHX, BACKSLASHY) VALUES (:Serial, :SKEWX, :SKEWY, :BACKSLASHX, :BACKSLASHY)");
+    qry->bindValue(":Serial",SerialNum);
+     qry->bindValue(":SKEWX",SkewX);
+     qry->bindValue(":SKEWY",SkewY);
+     qry->bindValue(":BACKSLASHX",BackslashX);
+     qry->bindValue(":BACKSLASHY",BackslashY);
+     qry->exec();
         bool ok = db.open();
       ui->stackedWidget->setCurrentIndex(4);
 
     if(db.open()){
         qDebug("Database is open");
-        db.close();
+        if(qry->exec())
+        {
+            qDebug("SQL Successfully Executed! ");
+        }
 
     }
     else
