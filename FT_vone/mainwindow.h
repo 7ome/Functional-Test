@@ -14,6 +14,7 @@
 
 
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -33,6 +34,15 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+
+ //SQLITE functions
+    QString dbpath = "C:\\Users\\Tome\\Documents\\Funtional-Test\\Database\\Batch7.db";
+    QSqlDatabase db;
+    QString SerialNum ;
+    QString Skew;
+    QString Backslash;
+
+//Serial functions
     QSerialPort serial;
     QString datas;
     QStringList list;
@@ -40,18 +50,17 @@ public:
     bool check;
     bool extractButton_clicked;
     int motorspeed;
-    QString SerialNum = "V1-05-000-002";
-    QString SkewX       ="0.0123";
-    QString SkewY       ="0.0234";
-    QString BackslashX  ="0.0456";
-    QString BackslashY  ="0.0789";
+
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
 private slots:
+
     void delay(int sec);
     void sendcommand(const char *gCode);
+
+ //Main Menu
     void on_pushButton_clicked();
     void on_MenuButton_clicked();
     void on_BridgeButton_clicked();
@@ -66,14 +75,16 @@ private slots:
     void on_SpinEButton_clicked();
     void on_HomeZDButton_clicked();
     void on_HomeZUButton_clicked();
+ //Drill
     void on_SetDrillButton_clicked();
     void on_runoutButton_clicked();
     void on_SpinMotorButton_clicked();
     void on_LineEdit_returnPressed();
-
     void on_MotorSpeedSlider_valueChanged(int value);
-
     void on_MotorSpeedSlider_sliderReleased();
+ //Database
+    void on_SearchButton_clicked();
+    void on_SaveButton_clicked();
 
 private:
     Ui::MainWindow *ui;
