@@ -9,6 +9,10 @@
 #include <QTimer>
 #include <QTime>
 #include <QtSql>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

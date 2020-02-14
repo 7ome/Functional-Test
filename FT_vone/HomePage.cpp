@@ -25,11 +25,24 @@ void MainWindow::on_ProbeButton_clicked()
 
 void MainWindow::on_DatabaseButton_clicked()
 {
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("Voltera");
-    db.setDatabaseName("V1DB");
-    db.setUserName("Banana");
-    db.setPassword("12345");
+    QString dbpath = "C:\\Users\\Tome\\Documents\\Funtional-Test\\Database\\Batch7.db";
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    //db.setHostName("root");
+    db.setDatabaseName(dbpath);
+    //db.setUserName("Tome");
+   // db.setPassword("password");
+
+    db.open();
+    QSqlQuery* qry = new QSqlQuery(db);
+    qry->prepare("select * from calibration");
         bool ok = db.open();
       ui->stackedWidget->setCurrentIndex(4);
+
+    if(db.open()){
+        qDebug("Database is open");
+        db.close();
+
+    }
+    else
+        qDebug()<<"error"<<db.lastError();
 }
