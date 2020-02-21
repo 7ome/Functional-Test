@@ -122,3 +122,24 @@ void MainWindow::on_LineEdit_returnPressed()
 }
 
 
+
+void MainWindow::on_RunOutButton_clicked()
+{
+    sendcommand("G1 X120 Y115\n");
+         sendcommand("D110 R8\n");
+          sendcommand("G1 Y120 F300\n");
+          sendcommand("G4 S2\n");
+          sendcommand("G1 Y110 F1000\n");
+          sendcommand("D110 R0\n");
+          sendcommand("G1 X20 Y40 F12000\n");
+}
+
+void MainWindow::on_NoiseButton_clicked()
+{
+    sendcommand("D110 R100\n");
+       sendcommand("D110 R75\n");
+       sendcommand("D110 R50\n");
+       sendcommand("D110 R25\n");
+       delay(1);
+       sendcommand("D110 R0\n");
+}

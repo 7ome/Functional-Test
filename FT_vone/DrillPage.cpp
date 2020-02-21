@@ -12,7 +12,7 @@ void MainWindow::on_SetDrillButton_clicked()
    sendcommand("M18\n");
 }
 
-void MainWindow::on_runoutButton_clicked()
+void MainWindow::on_FullRunOutButton_clicked()
 {
    sendcommand("G1 X120 Y115\n");
     sendcommand("D110 R8\n");

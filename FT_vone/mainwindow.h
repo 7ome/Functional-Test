@@ -77,7 +77,7 @@ private slots:
     void on_HomeZUButton_clicked();
  //Drill
     void on_SetDrillButton_clicked();
-    void on_runoutButton_clicked();
+    void on_FullRunOutButton_clicked();
     void on_SpinMotorButton_clicked();
     void on_LineEdit_returnPressed();
     void on_MotorSpeedSlider_valueChanged(int value);
@@ -85,6 +85,10 @@ private slots:
  //Database
     void on_SearchButton_clicked();
     void on_SaveButton_clicked();
+
+    void on_RunOutButton_clicked();
+
+    void on_NoiseButton_clicked();
 
 private:
     Ui::MainWindow *ui;
