@@ -78,7 +78,7 @@
      <number>5</number>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QPushButton" name="BridgeButton">
@@ -181,7 +181,7 @@
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>Home</string>
+       <string>Menu</string>
       </property>
      </widget>
     </widget>
@@ -343,11 +343,11 @@
         <x>390</x>
         <y>170</y>
         <width>161</width>
-        <height>141</height>
+        <height>101</height>
        </rect>
       </property>
       <property name="text">
-       <string>Runout</string>
+       <string>Full Runout</string>
       </property>
      </widget>
      <widget class="QLabel" name="label_6">
@@ -361,6 +361,32 @@
       </property>
       <property name="text">
        <string>Motor Speed</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="justROButton">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>280</y>
+        <width>71</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Runout</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="NoiseButton">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>280</y>
+        <width>71</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Noise</string>
       </property>
      </widget>
     </widget>
@@ -403,11 +429,31 @@
        <string>Database</string>
       </property>
      </widget>
+     <widget class="QTextBrowser" name="readtextbox">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>130</y>
+        <width>471</width>
+        <height>191</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTextBrowser" name="textBrowser_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>80</y>
+        <width>251</width>
+        <height>31</height>
+       </rect>
+      </property>
+     </widget>
      <widget class="QPushButton" name="ExtractButton">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>110</y>
+        <x>500</x>
+        <y>130</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -419,8 +465,8 @@
      <widget class="QPushButton" name="SaveButton">
       <property name="geometry">
        <rect>
-        <x>620</x>
-        <y>150</y>
+        <x>500</x>
+        <y>170</y>
         <width>81</width>
         <height>31</height>
        </rect>
@@ -432,73 +478,14 @@
      <widget class="QPushButton" name="SearchButton">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>70</y>
+        <x>290</x>
+        <y>80</y>
         <width>81</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
        <string>Search Data</string>
-      </property>
-     </widget>
-     <widget class="QTableView" name="tableView">
-      <property name="geometry">
-       <rect>
-        <x>5</x>
-        <y>110</y>
-        <width>601</width>
-        <height>241</height>
-       </rect>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="VoneRButton">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>40</y>
-        <width>61</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>V-one</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="BridgeRButton">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>40</y>
-        <width>61</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Bridge</string>
-      </property>
-     </widget>
-     <widget class="QRadioButton" name="VoneButton_3">
-      <property name="geometry">
-       <rect>
-        <x>140</x>
-        <y>40</y>
-        <width>61</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>V-one</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="Searchline">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>70</y>
-        <width>171</width>
-        <height>31</height>
-       </rect>
       </property>
      </widget>
     </widget>
