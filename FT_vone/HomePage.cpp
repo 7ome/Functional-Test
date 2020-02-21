@@ -23,7 +23,6 @@ void MainWindow::on_DatabaseButton_clicked()
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(dbpath);  
     db.open();
-
     if(db.open()){
         qDebug("Database is open");
          ui->stackedWidget->setCurrentIndex(4);

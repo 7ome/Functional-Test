@@ -27,6 +27,7 @@ void MainWindow::on_SearchButton_clicked()
 
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();
+    ui->tableView->
 }
 void MainWindow::on_SaveButton_clicked()
 {
