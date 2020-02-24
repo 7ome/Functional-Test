@@ -29,6 +29,12 @@
       <height>91</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
     <property name="text">
      <string>Connect</string>
     </property>
@@ -51,6 +57,12 @@
       <width>151</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Menu</string>
@@ -89,6 +101,15 @@
         <width>111</width>
         <height>201</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <family>MS Shell Dlg 2</family>
+        <pointsize>14</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
       </property>
       <property name="styleSheet">
        <string notr="true">font: 14pt &quot;MS Shell Dlg 2&quot;;</string>
@@ -537,6 +558,12 @@
       <width>151</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
     </property>
     <property name="text">
      <string>Home</string>

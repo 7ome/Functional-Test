@@ -61,11 +61,21 @@ void MainWindow::on_pushButton_clicked()
                //Print strings per line in console
                for (int strlength = 0; strlength < str.length(); strlength++) {
               std::cout << str.at(strlength).toStdString() << std::endl;
+              if(str[strlength].contains("error:")){
+                  msgbox.setWindowTitle("ERROR");
+                  msgbox.setText(str[strlength]);
+                  msgbox.exec();
+              }
+              else
+              {
+              }
           }
+
+
     //Read Vone Values when Extract Button is clicked (in Database Page)
               if (extractButton_clicked)
               {
-    //Search for Serial Number, Skew and Backslash
+    //Search for Serial Number, Skew and Backlash
     //Remove unecessary tags (eg. logs)
                 str.filter(datas);
                 for (int i=0; i<str.length();i++){

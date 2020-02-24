@@ -8,6 +8,7 @@
 #include <QThread>
 #include <QTimer>
 #include <QTime>
+#include <QMessageBox>
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -48,10 +49,11 @@ public:
     QString datas;
     QStringList list;
     const char *gline[30];
-    bool check;
+    bool status;
     bool extractButton_clicked;
     int motorspeed;
 
+QMessageBox msgbox;
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
