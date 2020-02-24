@@ -41,7 +41,7 @@ public:
     QSqlDatabase db;
     QString SerialNum ;
     QString Skew;
-    QString Backslash;
+    QString Backlash;
 
 //Serial functions
     QSerialPort serial;

@@ -33,10 +33,10 @@ void MainWindow::on_SaveButton_clicked()
 {
 
     QSqlQuery* qry = new QSqlQuery(db);
-    qry->prepare("INSERT into UnitInfo ( Serial, SKEW, BACKSLASH) VALUES (:Serial, :SKEW, :BACKSLASH)");
+    qry->prepare("INSERT into UnitInfo ( Serial, SKEW, BACKLASH) VALUES (:Serial, :SKEW, :BACKLASH)");
     qry->bindValue(":Serial", SerialNum);
     qry->bindValue(":SKEW", Skew);
-    qry->bindValue(":BACKSLASH",Backslash);
+    qry->bindValue(":BACKLASH",Backlash);
     qry->exec();
 
     if(!qry->exec()){

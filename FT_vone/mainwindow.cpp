@@ -16,6 +16,7 @@ MainWindow::~MainWindow()
 {
     delete ui;
     serial.close();
+    db.close();
 }
 void MainWindow:: delay(int sec)
 {
@@ -78,8 +79,8 @@ void MainWindow::on_pushButton_clicked()
                            qDebug()<<Skew;
                        }
                        if(str[i].contains("M507")){
-                           Backslash = str[i].remove("M507 ");
-                           qDebug()<<Backslash;
+                           Backlash = str[i].remove("M507 ");
+                           qDebug()<<Backlash;
                        }
                        else{
                        }

@@ -432,7 +432,7 @@
      <widget class="QPushButton" name="ExtractButton">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>600</x>
         <y>110</y>
         <width>121</width>
         <height>51</height>
@@ -445,7 +445,7 @@
      <widget class="QPushButton" name="SaveButton">
       <property name="geometry">
        <rect>
-        <x>490</x>
+        <x>600</x>
         <y>170</y>
         <width>121</width>
         <height>51</height>
@@ -473,7 +473,7 @@
        <rect>
         <x>10</x>
         <y>110</y>
-        <width>461</width>
+        <width>531</width>
         <height>241</height>
        </rect>
       </property>
