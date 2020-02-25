@@ -18,9 +18,9 @@ void MainWindow::on_SearchButton_clicked()
         qry->prepare("SELECT * From UnitInfo");
         qry->exec();
     }
-   else{
-    qry->prepare("Select * From UnitInfo WHERE Serial='"+searchline+"'");
-    qry->exec();
+    else{
+        qry->prepare("Select * From UnitInfo WHERE Serial='"+searchline+"'");
+        qry->exec();
 
     }
     model->setQuery(*qry);

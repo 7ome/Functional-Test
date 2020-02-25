@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Gandalf</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
@@ -202,7 +202,7 @@
        <string notr="true"/>
       </property>
       <property name="text">
-       <string>Home</string>
+       <string>Menu</string>
       </property>
      </widget>
     </widget>
@@ -494,7 +494,7 @@
        <rect>
         <x>10</x>
         <y>110</y>
-        <width>531</width>
+        <width>541</width>
         <height>241</height>
        </rect>
       </property>
@@ -592,12 +592,6 @@
      <height>22</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuV_One_QC">
-    <property name="title">
-     <string>V-One QC</string>
-    </property>
-   </widget>
-   <addaction name="menuV_One_QC"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

@@ -4,7 +4,7 @@
 
 void MainWindow::on_MenuButton_clicked()
 {
-   ui->stackedWidget->setCurrentIndex(0);
+    ui->stackedWidget->setCurrentIndex(0);
 }
 void MainWindow::on_BridgeButton_clicked()
 {
@@ -12,20 +12,20 @@ void MainWindow::on_BridgeButton_clicked()
 }
 void MainWindow::on_DrillButton_clicked()
 {
-      ui->stackedWidget->setCurrentIndex(2);
+    ui->stackedWidget->setCurrentIndex(2);
 }
 void MainWindow::on_ProbeButton_clicked()
 {
-      ui->stackedWidget->setCurrentIndex(3);
+    ui->stackedWidget->setCurrentIndex(3);
 }
 void MainWindow::on_DatabaseButton_clicked()
 {
     db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbpath);  
+    db.setDatabaseName(dbpath);
     db.open();
     if(db.open()){
         qDebug("Database is open");
-         ui->stackedWidget->setCurrentIndex(4);
+        ui->stackedWidget->setCurrentIndex(4);
     }
     else
         qDebug()<<"error"<<db.lastError();

@@ -88,10 +88,10 @@ private slots:
  //Database
     void on_SearchButton_clicked();
     void on_SaveButton_clicked();
-
     void on_RunOutButton_clicked();
-
     void on_NoiseButton_clicked();
+
+    void initialize_com();
 
 private:
     Ui::MainWindow *ui;
