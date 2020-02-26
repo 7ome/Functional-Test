@@ -72,13 +72,41 @@ void MainWindow::on_pushButton_clicked()
                     if(reply==QMessageBox::Save){
                         on_SaveButton_clicked();
                     }
-                    else{
-                    }
+                    else
+                        break;
+
                 }
                 else{
                     extractButton_clicked = false;
                 }
             }
+        }
+        if(probepinsButton_clicked)
+        {
+            str.filter(datas);
+            for (int i=0; i<str.length();i++)
+            {
+                if(str[i].contains("Probe Mounted")){
+                    probestatus("Mounted");
+                    qDebug("Mounted");
+                }
+                if(str[i].contains("~~~toolUpdate type:Probe")){
+                    probestatus("Mounted");
+                    qDebug("Mounted");
+                }
+                if(str[i].contains("~~~toolUpdate type:None")){
+                    probestatus("Not Mounted");
+                    qDebug("Not Mounted");
+                }
+                if(str[i].contains("Triggered")){
+                    probestatus("Triggered");
+                    qDebug("Triggered");
+                }
+                else{
+                       probestatus("blank");
+                }
+            }
+            probepinsButton_clicked = false;
         }
         return true;
     }

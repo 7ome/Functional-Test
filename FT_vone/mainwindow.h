@@ -51,6 +51,7 @@ public:
     const char *gline[30];
     bool status;
     bool extractButton_clicked;
+    bool probepinsButton_clicked;
     int motorspeed;
 
 QMessageBox msgbox;
@@ -92,6 +93,11 @@ private slots:
     void on_NoiseButton_clicked();
 
     void initialize_com();
+
+    void on_FullBridgeTestButton_clicked();
+
+    void on_ProbePinsButton_clicked();
+    void probestatus(const char *stat);
 
 private:
     Ui::MainWindow *ui;
