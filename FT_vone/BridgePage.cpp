@@ -48,9 +48,7 @@ void MainWindow::on_FullBridgeTestButton_clicked()
     for (int x=0;x<3;x++){
         on_SpeedXButton_clicked();
     }
-    for (int x=0;x<3;x++){
-        on_SpinEButton_clicked();
-    }
+    on_SpinEButton_clicked();
     for (int x=0;x<3;x++){
         on_HomeZDButton_clicked();
     }
@@ -59,38 +57,38 @@ void MainWindow::on_FullBridgeTestButton_clicked()
 void MainWindow::on_ProbePinsButton_clicked()
 {
     sendcommand("M125\n");
-    qDebug("Mount Probe");
     probepinsButton_clicked = true;
+    firstrun=true;
     probemounted = false;
     probetriggered =false;
     probedisconnected = false;
 }
-void MainWindow:: probestatus(QString stat)
+void MainWindow:: probestatus()
 {
-   int countdown = 20;
     ui->progressBar->setMaximum(countdown*10);
     ui->progressBar->setMinimum(0);
 
-   qDebug()<<stat;
-  if(stat == "Start"){
-   while(true)
-   {
-       if(countdown==0){
-           probepinsButton_clicked = false;
-           qDebug("error: Probe Not Detected.");
-           break;
-       }
-       else{
-           ui->progressBar->setValue(countdown*10);
-           qDebug()<<countdown;
-           countdown--;
-                   delay(1);
-       }
-   }
-   }
-  else{
-      qDebug("Disconnect Probe and Try again!");
-  }
+  if(probemounted && probetriggered && probedisconnected){
+       ui->probeBrowser->setText("Probe Pogo Pin Passed!");
+       probepinsButton_clicked = false;
+    }
+    else{
+        while(!probemounted || !probetriggered || !probedisconnected)
+        {
+            if(countdown<0){
+                ui->probeBrowser->setText("Probe Pogo Pin Failed!");
+                qDebug("error: Probe Not Detected.");
+                probepinsButton_clicked = false;
+                break;
+            }
+            else{
+                ui->progressBar->setValue(countdown*10);
+                qDebug()<<countdown;
+                countdown--;
+                sendcommand("M125\n");
+                delay(1);
+            }
+        }
+    }
 }
-
 

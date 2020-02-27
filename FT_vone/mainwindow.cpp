@@ -89,28 +89,48 @@ void MainWindow::on_pushButton_clicked()
             str.filter(datas);
             for (int i=0; i<str.length();i++)
             {
-                if(str[i].contains("Not Mounted")){
-                    probestatus("Start");
-                    qDebug("Start");
-                }
-                if(str[i].contains("~~~toolUpdate type:Probe")){
-                    qDebug("Mounted");
-                    probemounted = true;
-                }
-                if(str[i].contains("~~~toolUpdate type:None")){
-                    qDebug("Not Mounted");
+                if(str[i].contains("Probe: Not Mounted")&& firstrun){
+                    ui->probeBrowser->setText("Mount Probe");
+                    firstrun = false;
                     probedisconnected = true;
+                    countdown = 10;
+                    probestatus();
                 }
-                if(str[i].contains("Triggered")){
+                if(str[i].contains("Probe: Probe Mounted")&& probedisconnected){
+                    ui->probeBrowser->setText("Trigger Probe");
+                    probemounted = true;
+                    probedisconnected = false;
+                    countdown = 10;
+                    probestatus();
+                }
+                if(str[i].contains("Probe: Triggered")&& probemounted){
+                   ui->probeBrowser->setText("Release Trigger");
+                    probemounted=false;
+                    probetriggered=true;
+                    countdown = 10;
+                    probestatus();
+                }
+                if(str[i].contains("Probe: Probe Mounted")&& probetriggered){
+                   ui->probeBrowser->setText("Disconnect Probe");
+                    probemounted=true;
+                    probetriggered=false;
 
-                   qDebug("Triggered");
-                   probetriggered=true;
+                    countdown = 10;
+                    probestatus();
+
+                }
+                if(str[i].contains("Probe: Not Mounted")&& probemounted){
+                    probedisconnected=true;
+                    probetriggered=true;
+                    probestatus();
+                }
+                if(str[i].contains("Probe: Probe Mounted") && !probemounted){
+                    qDebug("Disconnect Probe to begin");
                 }
                 else{
-
                 }
             }
-            probepinsButton_clicked = false;
+
         }
         return true;
     }

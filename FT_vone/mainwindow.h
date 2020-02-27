@@ -51,13 +51,15 @@ public:
     const char *gline[30];
 
     bool extractButton_clicked;
-    bool probepinsButton_clicked;
+    bool probepinsButton_clicked=false;
 
     int motorspeed;
 //Probe testing
-    bool probemounted;
-    bool probetriggered;
-    bool probedisconnected;
+    bool probemounted=false;
+    bool probetriggered=false;
+    bool probedisconnected=false;
+    bool firstrun=false;
+    int countdown = 10;
 
 QMessageBox msgbox;
 
@@ -102,7 +104,7 @@ private slots:
     void on_FullBridgeTestButton_clicked();
 
     void on_ProbePinsButton_clicked();
-    void probestatus(QString stat);
+    void probestatus();
 
 private:
     Ui::MainWindow *ui;
