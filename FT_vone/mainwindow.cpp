@@ -25,8 +25,7 @@ void MainWindow:: delay(int sec)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 void MainWindow::on_pushButton_clicked()
-{
-
+{    
     initialize_com();
     //this is called when datas are received
     QObject::connect(&serial, &QSerialPort::readyRead, [&]
@@ -56,17 +55,22 @@ void MainWindow::on_pushButton_clicked()
             str.filter(datas);
             for (int i=0; i<str.length();i++){
                 str[i].remove("log:  ");
+
+                //m504 is serial tag
                 if(str[i].contains("M504")){
                     SerialNum =str[i].remove("M504 S:");
                     qDebug()<<SerialNum;
                 }
+                //m506 is skew tag
                 if(str[i].contains("M506")){
                     Skew = str[i].remove("M506 ");
                     qDebug()<<Skew;
                 }
+                //m507 is backlash tag
                 if(str[i].contains("M507")){
                     Backlash = str[i].remove("M507 ");
                     qDebug()<<Backlash;
+                    //after extracting backlash, skew and serial, print them in msgbox and ask user to save it
                     QMessageBox::StandardButton reply;
                     reply=msgbox.information(nullptr,"Unit Info", "Serial No:\t"+SerialNum+"\n Skew:\t"+Skew+"\n Backlash:\t"+Backlash,QMessageBox::Cancel | QMessageBox::Save);
                     if(reply==QMessageBox::Save){
@@ -74,7 +78,6 @@ void MainWindow::on_pushButton_clicked()
                     }
                     else
                         break;
-
                 }
                 else{
                     extractButton_clicked = false;
@@ -86,24 +89,25 @@ void MainWindow::on_pushButton_clicked()
             str.filter(datas);
             for (int i=0; i<str.length();i++)
             {
-                if(str[i].contains("Probe Mounted")){
-                    probestatus("Mounted");
-                    qDebug("Mounted");
+                if(str[i].contains("Not Mounted")){
+                    probestatus("Start");
+                    qDebug("Start");
                 }
                 if(str[i].contains("~~~toolUpdate type:Probe")){
-                    probestatus("Mounted");
                     qDebug("Mounted");
+                    probemounted = true;
                 }
                 if(str[i].contains("~~~toolUpdate type:None")){
-                    probestatus("Not Mounted");
                     qDebug("Not Mounted");
+                    probedisconnected = true;
                 }
                 if(str[i].contains("Triggered")){
-                    probestatus("Triggered");
-                    qDebug("Triggered");
+
+                   qDebug("Triggered");
+                   probetriggered=true;
                 }
                 else{
-                       probestatus("blank");
+
                 }
             }
             probepinsButton_clicked = false;

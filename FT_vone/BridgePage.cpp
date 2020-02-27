@@ -61,14 +61,18 @@ void MainWindow::on_ProbePinsButton_clicked()
     sendcommand("M125\n");
     qDebug("Mount Probe");
     probepinsButton_clicked = true;
+    probemounted = false;
+    probetriggered =false;
+    probedisconnected = false;
 }
-void MainWindow:: probestatus(const char *stat)
+void MainWindow:: probestatus(QString stat)
 {
-    int countdown = 20;
-    ui->progressBar->setMaximum(countdown*5);
+   int countdown = 20;
+    ui->progressBar->setMaximum(countdown*10);
     ui->progressBar->setMinimum(0);
 
    qDebug()<<stat;
+  if(stat == "Start"){
    while(true)
    {
        if(countdown==0){
@@ -77,12 +81,16 @@ void MainWindow:: probestatus(const char *stat)
            break;
        }
        else{
-           ui->progressBar->setValue(countdown*5);
+           ui->progressBar->setValue(countdown*10);
            qDebug()<<countdown;
            countdown--;
                    delay(1);
        }
    }
+   }
+  else{
+      qDebug("Disconnect Probe and Try again!");
+  }
 }
 
 

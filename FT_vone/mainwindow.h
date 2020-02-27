@@ -49,10 +49,15 @@ public:
     QString datas;
     QStringList list;
     const char *gline[30];
-    bool status;
+
     bool extractButton_clicked;
     bool probepinsButton_clicked;
+
     int motorspeed;
+//Probe testing
+    bool probemounted;
+    bool probetriggered;
+    bool probedisconnected;
 
 QMessageBox msgbox;
 
@@ -97,7 +102,7 @@ private slots:
     void on_FullBridgeTestButton_clicked();
 
     void on_ProbePinsButton_clicked();
-    void probestatus(const char *stat);
+    void probestatus(QString stat);
 
 private:
     Ui::MainWindow *ui;
