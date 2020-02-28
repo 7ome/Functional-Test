@@ -90,16 +90,16 @@
      <number>5</number>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QPushButton" name="BridgeButton">
       <property name="geometry">
        <rect>
-        <x>50</x>
-        <y>80</y>
-        <width>111</width>
-        <height>201</height>
+        <x>40</x>
+        <y>60</y>
+        <width>131</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="font">
@@ -121,10 +121,10 @@
      <widget class="QPushButton" name="DrillButton">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>80</y>
-        <width>111</width>
-        <height>201</height>
+        <x>200</x>
+        <y>60</y>
+        <width>131</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -137,10 +137,10 @@
      <widget class="QPushButton" name="ProbeButton">
       <property name="geometry">
        <rect>
-        <x>310</x>
-        <y>80</y>
-        <width>111</width>
-        <height>201</height>
+        <x>360</x>
+        <y>60</y>
+        <width>131</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -153,10 +153,10 @@
      <widget class="QPushButton" name="DatabaseButton">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>80</y>
-        <width>111</width>
-        <height>201</height>
+        <x>520</x>
+        <y>60</y>
+        <width>131</width>
+        <height>251</height>
        </rect>
       </property>
       <property name="styleSheet">
@@ -169,10 +169,10 @@
      <widget class="QPushButton" name="HotkeyButton">
       <property name="geometry">
        <rect>
-        <x>590</x>
-        <y>230</y>
+        <x>630</x>
+        <y>330</y>
         <width>101</width>
-        <height>61</height>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">

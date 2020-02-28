@@ -110,11 +110,10 @@ void MainWindow::on_pushButton_clicked()
                     countdown = 10;
                     probestatus();
                 }
-                if(str[i].contains("Probe: Probe Mounted")&& probetriggered){
+                if(str[i].contains("Probe: Probe Mounted")&& probetriggered && probetriggered){
                    ui->probeBrowser->setText("Disconnect Probe");
                     probemounted=true;
                     probetriggered=false;
-
                     countdown = 10;
                     probestatus();
 

@@ -20,8 +20,11 @@ void MainWindow::on_ProbeButton_clicked()
 }
 void MainWindow::on_DatabaseButton_clicked()
 {
-    db = QSqlDatabase::addDatabase("QSQLITE");
-    db.setDatabaseName(dbpath);
+    db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("127.0.0.1");
+    db.setDatabaseName("Batch7");
+    db.setUserName("root");
+    db.setPassword("");
     db.open();
     if(db.open()){
         qDebug("Database is open");

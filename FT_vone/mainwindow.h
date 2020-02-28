@@ -38,7 +38,7 @@ public:
 
  //SQLITE functions
     //QString dbpath = "C:\\Users\\Tome\\Documents\\Funtional-Test\\Database\\Batch7.db";
-   QString dbpath = "C:\\Users\\WORKSTATION-1\\Documents\\GitHub\\Funtional-Test\\Database\\Batch7.db";
+    QString dbpath = "C:\\Users\\WORKSTATION-1\\Documents\\GitHub\\Funtional-Test\\Database\\Batch7.db";
     QSqlDatabase db;
     QString SerialNum ;
     QString Skew;
