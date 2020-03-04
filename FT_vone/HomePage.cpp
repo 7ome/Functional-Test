@@ -22,7 +22,8 @@ void MainWindow::on_DatabaseButton_clicked()
 {
     db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("127.0.0.1");
-    db.setDatabaseName("Batch7");
+    db.setDatabaseName("batch7");
+    db.setPort(3306);
     db.setUserName("root");
     db.setPassword("");
     db.open();

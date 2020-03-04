@@ -100,9 +100,7 @@ private slots:
     void on_NoiseButton_clicked();
 
     void initialize_com();
-
     void on_FullBridgeTestButton_clicked();
-
     void on_ProbePinsButton_clicked();
     void probestatus();
 

@@ -15,13 +15,15 @@ void MainWindow::on_SearchButton_clicked()
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery* qry = new QSqlQuery(db);
     if(searchline==""){
-        qry->prepare("SELECT * From UnitInfo");
-        qry->exec();
+        if(!qry->exec("select * from unitinfo;")){
+            qDebug("Command failed!!!!");
+             qDebug()<<"error:" <<qry->lastError();
+        }
+
     }
     else{
-        qry->prepare("Select * From UnitInfo WHERE Serial='"+searchline+"'");
+        qry->prepare("Select * From unitinfo WHERE Serial='"+searchline+"'");
         qry->exec();
-
     }
     model->setQuery(*qry);
 
@@ -33,11 +35,11 @@ void MainWindow::on_SaveButton_clicked()
 {
 
     QSqlQuery* qry = new QSqlQuery(db);
-    qry->prepare("INSERT into UnitInfo ( Serial, SKEW, BACKLASH) VALUES (:Serial, :SKEW, :BACKLASH)");
-    qry->bindValue(":Serial", SerialNum);
-    qry->bindValue(":SKEW", Skew);
-    qry->bindValue(":BACKLASH",Backlash);
-    qry->exec();
+    //qry->prepare("INSERT into unitinfo ( Serial, SKEW, BACKLASH) VALUES (:Serial, :SKEW, :BACKLASH)");
+//    qry->bindValue(":Serial", SerialNum);
+//    qry->bindValue(":SKEW", Skew);
+//    qry->bindValue(":BACKLASH",Backlash);
+    qry->exec("INSERT into unitinfo ( Serial, SKEW, BACKLASH) VALUES ('"+SerialNum+"','"+Skew+"','"+Backlash+"')");
 
     if(!qry->exec()){
         qDebug()<<"error:" <<qry->lastError();
