@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <iostream>
 
-void MainWindow::initialize_com()
+void MainWindow::initialize_serialcom()
 {
 
     //Scans all available ports but filters and set only the FTDI(V-one)com
@@ -29,4 +29,9 @@ void MainWindow::initialize_com()
             ui->textBrowser->setText("Status: Connected");
 }
     }
+}
+//Writes to the serial
+void MainWindow::sendcommand(const char * gCode)
+{
+    serial.write(gCode);
 }

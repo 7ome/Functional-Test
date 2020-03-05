@@ -1,0 +1,77 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include <QDebug>
+#include <iostream>
+
+using namespace std;
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+    , ui(new Ui::MainWindow)
+{
+    ui->setupUi(this);
+    ui->textBrowser->setText("Status: Disconnected");
+}
+MainWindow::~MainWindow()
+{
+    delete ui;
+    serial.close();
+    db.close();
+}
+void MainWindow:: delay(int sec)
+{
+    QTime dieTime= QTime::currentTime().addSecs(sec);
+    while (QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+void MainWindow::on_pushButton_clicked()
+{    
+    initialize_serialcom();
+    //this is called when datas are received
+    QObject::connect(&serial, &QSerialPort::readyRead, [&]
+    {
+        datas = serial.readAll();
+        //Split parts with "\n" and ignore empty strings
+        str = datas.split(("\n"), QString::SkipEmptyParts);
+        delay(1);
+        //Print strings per line in console
+        for (int strlength = 0; strlength < str.length(); strlength++) {
+            std::cout << str.at(strlength).toStdString() << std::endl;
+            if(str[strlength].contains("error:")){
+                msgbox.critical(nullptr,"ERROR!",str[strlength].remove("error: "));
+            }
+            else
+            {
+            }
+        }
+        //Read Vone Values when Extract Button is clicked (in Database Page)
+        if (extractButton_clicked)
+        {
+            str.filter(datas);
+            for (int i=0; i<str.length();i++){
+                get_calibration(i);
+            }
+        }
+        if(probepinsButton_clicked)
+        {
+            str.filter(datas);
+            for (int i=0; i<str.length();i++)
+            {
+                check_probepins(i);
+            }
+        }
+        return true;
+    }
+    );
+    datas.clear();
+    //this is called when serial com error occurs
+    QObject::connect(&serial,static_cast<void(QSerialPort::*)(QSerialPort::SerialPortError)>
+                     (&QSerialPort::error),
+                     [&](QSerialPort::SerialPortError error)
+    {
+        qDebug() << "An error occured: " << error;
+        delay(2);
+        ui->textBrowser->setText("Status: Disconnected\n");
+    });
+}
+
+

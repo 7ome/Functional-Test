@@ -63,6 +63,7 @@ void MainWindow::on_ProbePinsButton_clicked()
     probetriggered =false;
     probedisconnected = false;
 }
+
 void MainWindow:: probestatus()
 {
     ui->progressBar->setMaximum(countdown*10);
@@ -91,4 +92,44 @@ void MainWindow:: probestatus()
         }
     }
 }
-
+void MainWindow::check_probepins(int i)
+{
+    if(str[i].contains("Probe: Not Mounted")&& firstrun){
+        ui->probeBrowser->setText("Mount Probe");
+        firstrun = false;
+        probedisconnected = true;
+        countdown = 10;
+        probestatus();
+    }
+    if(str[i].contains("Probe: Probe Mounted")&& probedisconnected){
+        ui->probeBrowser->setText("Trigger Probe");
+        probemounted = true;
+        probedisconnected = false;
+        countdown = 10;
+        probestatus();
+    }
+    if(str[i].contains("Probe: Triggered")&& probemounted){
+       ui->probeBrowser->setText("Release Trigger");
+        probemounted=false;
+        probetriggered=true;
+        countdown = 10;
+        probestatus();
+    }
+    if(str[i].contains("Probe: Probe Mounted")&& probetriggered && probetriggered){
+       ui->probeBrowser->setText("Disconnect Probe");
+        probemounted=true;
+        probetriggered=false;
+        countdown = 10;
+        probestatus();
+    }
+    if(str[i].contains("Probe: Not Mounted")&& probemounted){
+        probedisconnected=true;
+        probetriggered=true;
+        probestatus();
+    }
+    if(str[i].contains("Probe: Probe Mounted") && !probemounted){
+        qDebug("Disconnect Probe to begin");
+    }
+    else{
+    }
+}

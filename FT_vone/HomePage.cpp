@@ -20,17 +20,21 @@ void MainWindow::on_ProbeButton_clicked()
 }
 void MainWindow::on_DatabaseButton_clicked()
 {
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
-    db.setDatabaseName("batch7");
-    db.setPort(3306);
-    db.setUserName("root");
-    db.setPassword("");
-    db.open();
-    if(db.open()){
-        qDebug("Database is open");
-        ui->stackedWidget->setCurrentIndex(4);
-    }
-    else
-        qDebug()<<"error"<<db.lastError();
+   initialize_db();
+   ui->stackedWidget->setCurrentIndex(4);
+
+}
+void MainWindow::on_HomeButton_clicked()
+{
+    sendcommand("G28\n");
+}
+
+//Write gCodes directly to the unit
+void MainWindow::on_LineEdit_returnPressed()
+{
+    QString cmdline =ui->LineEdit->text();
+    const char *ready = cmdline.toLatin1().toUpper().data();
+    sendcommand(ready);
+    sendcommand("\n");
+    ui->LineEdit->clear();
 }

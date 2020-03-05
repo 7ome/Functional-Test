@@ -14,34 +14,79 @@ void MainWindow::on_SearchButton_clicked()
     QString searchline =ui->Searchline->text();
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery* qry = new QSqlQuery(db);
+
     if(searchline==""){
         if(!qry->exec("select * from unitinfo;")){
-            qDebug("Command failed!!!!");
-             qDebug()<<"error:" <<qry->lastError();
+            qDebug()<<"error:" <<qry->lastError();
         }
-
     }
     else{
-        qry->prepare("Select * From unitinfo WHERE Serial='"+searchline+"'");
-        qry->exec();
+        qry->exec("Select * From unitinfo WHERE Serial='"+searchline+"'");
     }
     model->setQuery(*qry);
-
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();
 
 }
 void MainWindow::on_SaveButton_clicked()
 {
-
     QSqlQuery* qry = new QSqlQuery(db);
-    //qry->prepare("INSERT into unitinfo ( Serial, SKEW, BACKLASH) VALUES (:Serial, :SKEW, :BACKLASH)");
-//    qry->bindValue(":Serial", SerialNum);
-//    qry->bindValue(":SKEW", Skew);
-//    qry->bindValue(":BACKLASH",Backlash);
-    qry->exec("INSERT into unitinfo ( Serial, SKEW, BACKLASH) VALUES ('"+SerialNum+"','"+Skew+"','"+Backlash+"')");
 
-    if(!qry->exec()){
+    if(!qry->exec("INSERT into unitinfo ( Serial, SKEW, BACKLASH) VALUES ('"+SerialNum+"','"+Skew+"','"+Backlash+"')")){
         qDebug()<<"error:" <<qry->lastError();
     }
+    else
+    {
+    }
 }
+void MainWindow::initialize_db()
+{
+    db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("127.0.0.1");
+    db.setDatabaseName("batch7");
+    db.setPort(3306);
+    db.setUserName("root");
+    db.setPassword("");
+    db.open();
+
+    if(!db.open()){
+        qDebug()<<"error"<<db.lastError();
+    }
+    else
+    {
+        qDebug()<<"Connection to Database("<<db.databaseName()<<") Succesfull";
+    }
+}
+void MainWindow::get_calibration(int i)
+{
+    //Search for Serial Number, Skew and Backlash
+    //Remove unecessary tags (eg. logs)
+    str[i].remove("log:  ");
+    //m504 is serial tag
+    if(str[i].contains("M504")){
+        SerialNum =str[i].remove("M504 S:");
+        qDebug()<<SerialNum;
+    }
+    //m506 is skew tag
+    if(str[i].contains("M506")){
+        Skew = str[i].remove("M506 ");
+        qDebug()<<Skew;
+    }
+    //m507 is backlash tag
+    if(str[i].contains("M507")){
+        Backlash = str[i].remove("M507 ");
+        qDebug()<<Backlash;
+        //after extracting backlash, skew and serial, print them in msgbox and ask user to save it
+        QMessageBox::StandardButton reply;
+        reply=msgbox.information(nullptr,"Unit Info", "Serial No:\t"+SerialNum+"\n Skew:\t"+Skew+"\n Backlash:\t"+Backlash,QMessageBox::Cancel | QMessageBox::Save);
+        if(reply==QMessageBox::Save){
+            on_SaveButton_clicked();
+        }
+        else{
+        }
+    }
+    else{
+        extractButton_clicked = false;
+    }
+}
+
