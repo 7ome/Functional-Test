@@ -5,15 +5,15 @@
 void MainWindow::on_HomeXButton_clicked()
 {
 
-    serial.write("G28 X\n");
-    serial.write("G01 X5 F1000\n");
-    serial.write("M18\n");
+    sendcommand("G28 X\n");
+   sendcommand("G01 X5 F1000\n");
+   sendcommand("M18\n");
 }
 void MainWindow::on_SpeedXButton_clicked()
 {
-    serial.write("G28 X\n");
-    serial.write("G01 X128 F12000\n");
-    serial.write("G01 X0 F12000\n");
+   sendcommand("G28 X\n");
+    sendcommand("G01 X128 F12000\n");
+    sendcommand("G01 X0 F12000\n");
 }
 void MainWindow::on_SpinEButton_clicked()
 {
@@ -33,25 +33,32 @@ void MainWindow::on_SpinEButton_clicked()
 }
 void MainWindow::on_HomeZDButton_clicked()
 {
-    serial.write("G28 Z\n");
-    serial.write("G01 Z0 F200\n");
-    serial.write("M18\n");
+    sendcommand("G28 Z\n");
+    sendcommand("G01 Z0 F200\n");
+    sendcommand("M18\n");
 }
 
 void MainWindow::on_HomeZUButton_clicked()
 {
-    serial.write("G28 Z\n");
-    serial.write("M18\n");
+    sendcommand("G28 Z\n");
+    sendcommand("M18\n");
 }
 void MainWindow::on_FullBridgeTestButton_clicked()
 {
-    for (int x=0;x<3;x++){
-        on_SpeedXButton_clicked();
-    }
+    QString bridgeline= ui->BridgeSN->text();
+
+if(bridgeline.startsWith("B")){
+
+    on_HomeXButton_clicked();
+    on_SpeedXButton_clicked();
+    on_HomeZDButton_clicked();
+    on_HomeZUButton_clicked();
     on_SpinEButton_clicked();
-    for (int x=0;x<3;x++){
-        on_HomeZDButton_clicked();
-    }
+}
+else{
+    msgbox.critical(nullptr,"Error!","Invalid Bridge Serial Number");
+}
+
 }
 
 void MainWindow::on_ProbePinsButton_clicked()
@@ -69,9 +76,9 @@ void MainWindow:: probestatus()
     ui->progressBar->setMaximum(countdown*10);
     ui->progressBar->setMinimum(0);
 
-  if(probemounted && probetriggered && probedisconnected){
-       ui->probeBrowser->setText("Probe Pogo Pin Passed!");
-       probepinsButton_clicked = false;
+    if(probemounted && probetriggered && probedisconnected){
+        ui->probeBrowser->setText("Probe Pogo Pin Passed!");
+        probepinsButton_clicked = false;
     }
     else{
         while(!probemounted || !probetriggered || !probedisconnected)
@@ -109,14 +116,14 @@ void MainWindow::check_probepins(int i)
         probestatus();
     }
     if(str[i].contains("Probe: Triggered")&& probemounted){
-       ui->probeBrowser->setText("Release Trigger");
+        ui->probeBrowser->setText("Release Trigger");
         probemounted=false;
         probetriggered=true;
         countdown = 10;
         probestatus();
     }
     if(str[i].contains("Probe: Probe Mounted")&& probetriggered && probetriggered){
-       ui->probeBrowser->setText("Disconnect Probe");
+        ui->probeBrowser->setText("Disconnect Probe");
         probemounted=true;
         probetriggered=false;
         countdown = 10;

@@ -9,9 +9,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->textBrowser->setText("Status: Disconnected");
-}
+    ui->textBrowser->setText("Serial Connection: \tDisconnected\nDatabase Connection: \tDisconnected");
 
+}
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -30,6 +30,7 @@ void MainWindow::on_pushButton_clicked()
     //this is called when datas are received
     QObject::connect(&serial, &QSerialPort::readyRead, [&]
     {
+        update_comstatus();
         datas = serial.readAll();
         //Split parts with "\n" and ignore empty strings
         str = datas.split(("\n"), QString::SkipEmptyParts);
@@ -41,8 +42,7 @@ void MainWindow::on_pushButton_clicked()
                 msgbox.critical(nullptr,"ERROR!",str[strlength].remove("error: "));
             }
             else
-            {
-            }
+            {}
         }
         //Read Vone Values when Extract Button is clicked (in Database Page)
         if (extractButton_clicked)
@@ -60,7 +60,7 @@ void MainWindow::on_pushButton_clicked()
                 check_probepins(i);
             }
         }
-        return true;
+        else{}
     }
     );
     datas.clear();
@@ -70,9 +70,11 @@ void MainWindow::on_pushButton_clicked()
                      [&](QSerialPort::SerialPortError error)
     {
         qDebug() << "An error occured: " << error;
-        delay(2);
-        ui->textBrowser->setText("Status: Disconnected\n");
+        serialcom=false;
+        update_comstatus();
     });
+
 }
+
 
 

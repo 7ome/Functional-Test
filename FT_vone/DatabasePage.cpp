@@ -39,24 +39,7 @@ void MainWindow::on_SaveButton_clicked()
     {
     }
 }
-void MainWindow::initialize_db()
-{
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
-    db.setDatabaseName("batch7");
-    db.setPort(3306);
-    db.setUserName("root");
-    db.setPassword("");
-    db.open();
 
-    if(!db.open()){
-        qDebug()<<"error"<<db.lastError();
-    }
-    else
-    {
-        qDebug()<<"Connection to Database("<<db.databaseName()<<") Succesfull";
-    }
-}
 void MainWindow::get_calibration(int i)
 {
     //Search for Serial Number, Skew and Backlash
@@ -64,7 +47,7 @@ void MainWindow::get_calibration(int i)
     str[i].remove("log:  ");
     //m504 is serial tag
     if(str[i].contains("M504")){
-        SerialNum =str[i].remove("M504 S:");
+        SerialNum =str[i].remove("M504 S");
         qDebug()<<SerialNum;
     }
     //m506 is skew tag
@@ -90,3 +73,23 @@ void MainWindow::get_calibration(int i)
     }
 }
 
+void MainWindow::on_dbButton_clicked()
+{
+    db = QSqlDatabase::addDatabase("QMYSQL");
+    db.setHostName("127.0.0.1");
+    db.setDatabaseName("batch7");
+    db.setPort(3306);
+    db.setUserName("root");
+    db.setPassword("");
+    if(db.open()){
+        qDebug()<<"Connection to Database("<<db.databaseName()<<") Succesfull";
+        dbcom=true;
+        update_comstatus();
+
+    }
+   else{
+        qDebug()<<"error"<<db.lastError();
+        dbcom=false;
+    }
+
+}

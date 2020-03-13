@@ -10,12 +10,7 @@ void MainWindow::initialize_serialcom()
     //Will change to v1 serial number later
     foreach (const QSerialPortInfo &info, QSerialPortInfo::availablePorts()) {
         //Filter FTDI
-        if(info.manufacturer()=="FTDI"){
-            qDebug() << "Name : " << info.portName();
-            qDebug() << "Description : " << info.description();
-            qDebug() << "Manufacturer: " << info.manufacturer();
-            ui->textBrowser->setText("Status: Connecting...");
-
+        if(info.manufacturer()=="FTDI"){        
             //Set and open coms
             serial.close();
             serial.setPortName(info.portName());
@@ -24,14 +19,21 @@ void MainWindow::initialize_serialcom()
             serial.setParity(QSerialPort::NoParity);
             serial.setStopBits(QSerialPort::OneStop);
             serial.setFlowControl(QSerialPort::NoFlowControl);
-            serial.open(QIODevice::ReadWrite);
-            delay(2);
-            ui->textBrowser->setText("Status: Connected");
+           if(serial.open(QIODevice::ReadWrite)){
+                serialcom=true;
+                qDebug("Initializing Connection.....");
+                delay(2);
+                qDebug("Connection to serial succesfull");
+           }
+           else{
+           }
 }
     }
+      update_comstatus();
 }
 //Writes to the serial
 void MainWindow::sendcommand(const char * gCode)
 {
     serial.write(gCode);
+    serial.flush();
 }

@@ -51,6 +51,8 @@ public:
     const char *gline[30];
     bool extractButton_clicked;
     bool probepinsButton_clicked=false;
+    bool serialcom = false;
+    bool dbcom;
 
     int motorspeed;
 //Probe testing
@@ -72,6 +74,7 @@ private slots:
 
   //Serial Com
     void initialize_serialcom();
+
  //Main Menu
     void on_pushButton_clicked();
     void on_MenuButton_clicked();
@@ -80,6 +83,7 @@ private slots:
     void on_ProbeButton_clicked();
     void on_DatabaseButton_clicked();
     void on_HomeButton_clicked();
+    void update_comstatus();
 
  //Bridge
     void on_HomeXButton_clicked();
@@ -106,10 +110,8 @@ private slots:
  //Database
     void on_SearchButton_clicked();
     void on_SaveButton_clicked();
-    void initialize_db();
     void get_calibration(int i);
-
-
+    void on_dbButton_clicked();
 
 private:
     Ui::MainWindow *ui;

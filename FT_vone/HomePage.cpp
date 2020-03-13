@@ -20,9 +20,7 @@ void MainWindow::on_ProbeButton_clicked()
 }
 void MainWindow::on_DatabaseButton_clicked()
 {
-   initialize_db();
    ui->stackedWidget->setCurrentIndex(4);
-
 }
 void MainWindow::on_HomeButton_clicked()
 {
@@ -37,4 +35,20 @@ void MainWindow::on_LineEdit_returnPressed()
     sendcommand(ready);
     sendcommand("\n");
     ui->LineEdit->clear();
+}
+void MainWindow::update_comstatus(){
+
+    if(serialcom && dbcom){
+        ui->textBrowser->setText("Serial Connection: \t Connected\nDatabase Connection:\t Connected");
+    }
+    if(!serialcom && dbcom){
+        ui->textBrowser->setText("Serial Connection: \t Disconnected\nDatabase Connection: \t Connected");
+    }
+    if(serialcom && !dbcom){
+        ui->textBrowser->setText("Serial Connection: \t Connected\nDatabase Connection: \t Disconnected");
+    }
+    if(!serialcom && !dbcom){
+        ui->textBrowser->setText("Serial Connection: \tDisconnected\nDatabase Connection: \tDisconnected");
+    }
+    else{}
 }
