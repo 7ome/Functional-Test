@@ -2,12 +2,13 @@ QT       += core gui \
     quick
 QT       += serialport
 QT       += gui
-
+QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
 CONFIG += console
+
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -22,8 +23,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     BridgePage.cpp \
+    DatabasePage.cpp \
     DrillPage.cpp \
     HomePage.cpp \
+    com.cpp \
     main.cpp \
     mainwindow.cpp
 

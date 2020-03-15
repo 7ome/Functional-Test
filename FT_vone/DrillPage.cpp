@@ -5,22 +5,70 @@
 
 void MainWindow::on_SetDrillButton_clicked()
 {
-   serial.write("G28;G1 X120 Y120 F12000;G4 S25;G1 X20 Y40\n");
-    serial.write("M18\n");
+    sendcommand("G28\n");
+    sendcommand("G1 X120 Y120 F12000\n");
+    //sendcommand("G4\n");
+    //sendcommand("G1 X20 Y40\n");
+    //sendcommand("M18\n");
 }
 
-void MainWindow::on_runoutButton_clicked()
+void MainWindow::on_FullRunOutButton_clicked()
 {
-  serial.write("G1 X120 Y115;D110 R100;D110 R75;D110 R50;D110 R25;D110 R8;G1 Y120 F300;G4 S3;G1 Y110 F1000;D110 R0;G1 X20 Y40 F12000");
-     serial.write("M18\n");
+    sendcommand("G4\n");
+    sendcommand("G1 X20 Y40\n");
+    sendcommand("G1 X120 Y115\n");
+    sendcommand("D110 R8\n");
+    sendcommand("G1 Y120 F300\n");
+    sendcommand("G4 S2\n");
+    sendcommand("G1 Y110 F1000\n");
+    sendcommand("D110 R0\n");
+    sendcommand("G1 X20 Y40 F12000\n");
+    sendcommand("D110 R100\n");
+    sendcommand("D110 R75\n");
+    sendcommand("D110 R50\n");
+    sendcommand("D110 R25\n");
+    delay(1);
+    sendcommand("D110 R0\n");
 }
 
 void MainWindow::on_SpinMotorButton_clicked()
 {
 
+    std::string s = std::to_string(motorspeed);
+    char const *speed= s.c_str();
+    sendcommand("D110 R");
+    sendcommand(speed);
+    sendcommand("\n");
+    //qDebug()<<motorspeed<<endl;
+    delay(1);
+
 }
 
-void MainWindow::on_MotorSpeedSlider_actionTriggered(int action)
+void MainWindow::on_MotorSpeedSlider_valueChanged(int value)
 {
+    motorspeed = value;
+}
+void MainWindow::on_MotorSpeedSlider_sliderReleased()
+{
+    on_SpinMotorButton_clicked();
+}
+void MainWindow::on_RunOutButton_clicked()
+{
+    sendcommand("G1 X120 Y115\n");
+    sendcommand("D110 R8\n");
+    sendcommand("G1 Y120 F300\n");
+    sendcommand("G4 S2\n");
+    sendcommand("G1 Y110 F1000\n");
+    sendcommand("D110 R0\n");
+    sendcommand("G1 X20 Y40 F12000\n");
+}
 
+void MainWindow::on_NoiseButton_clicked()
+{
+    sendcommand("D110 R100\n");
+    sendcommand("D110 R75\n");
+    sendcommand("D110 R50\n");
+    sendcommand("D110 R25\n");
+    delay(1);
+    sendcommand("D110 R0\n");
 }
