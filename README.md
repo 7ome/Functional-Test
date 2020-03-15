@@ -1,2 +1,2 @@
-# Funtional-Test
+# Functional-Test
 
