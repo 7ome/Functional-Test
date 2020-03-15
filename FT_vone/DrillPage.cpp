@@ -7,9 +7,6 @@ void MainWindow::on_SetDrillButton_clicked()
 {
     sendcommand("G28\n");
     sendcommand("G1 X120 Y120 F12000\n");
-    //sendcommand("G4\n");
-    //sendcommand("G1 X20 Y40\n");
-    //sendcommand("M18\n");
 }
 
 void MainWindow::on_FullRunOutButton_clicked()
@@ -33,7 +30,6 @@ void MainWindow::on_FullRunOutButton_clicked()
 
 void MainWindow::on_SpinMotorButton_clicked()
 {
-
     std::string s = std::to_string(motorspeed);
     char const *speed= s.c_str();
     sendcommand("D110 R");
@@ -41,7 +37,6 @@ void MainWindow::on_SpinMotorButton_clicked()
     sendcommand("\n");
     //qDebug()<<motorspeed<<endl;
     delay(1);
-
 }
 
 void MainWindow::on_MotorSpeedSlider_valueChanged(int value)

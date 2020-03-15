@@ -31,7 +31,6 @@ void MainWindow::on_SearchButton_clicked()
 void MainWindow::on_SaveButton_clicked()
 {
     QSqlQuery* qry = new QSqlQuery(db);
-
     if(!qry->exec("INSERT into unitinfo ( Serial, SKEW, BACKLASH) VALUES ('"+SerialNum+"','"+Skew+"','"+Backlash+"')")){
         qDebug()<<"error:" <<qry->lastError();
     }
@@ -75,6 +74,7 @@ void MainWindow::get_calibration(int i)
 
 void MainWindow::on_dbButton_clicked()
 {
+    //Initialize database connection to local server
     db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("127.0.0.1");
     db.setDatabaseName("batch7");
