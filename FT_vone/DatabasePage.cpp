@@ -12,9 +12,6 @@ void MainWindow::on_ExtractButton_clicked()
 void MainWindow::on_SearchButton_clicked()
 {
     QString searchline =ui->Searchline->text();
-    QSqlQueryModel * model = new QSqlQueryModel();
-    QSqlQuery* qry = new QSqlQuery(db);
-
     if(searchline==""){
         if(!qry->exec("select * from unitinfo;")){
             qDebug()<<"error:" <<qry->lastError();

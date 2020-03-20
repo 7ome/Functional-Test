@@ -41,6 +41,9 @@ public:
     QString SerialNum ;
     QString Skew;
     QString Backlash;
+    QSqlQueryModel * model = new QSqlQueryModel();
+    QSqlQuery* qry = new QSqlQuery(db);
+
 
 //Serial Communication
     QStringList str;
@@ -50,6 +53,7 @@ public:
     const char *gline[30];
     bool extractButton_clicked;
     bool probepinsButton_clicked=false;
+    bool fullbridgeButton_clicked;
     bool serialcom = false;
     bool dbcom;
     int motorspeed;
@@ -92,6 +96,7 @@ private slots:
     void on_ProbePinsButton_clicked();
     void probestatus();
     void check_probepins(int i);
+    void fullbridge_status(int i);
 
  //Drill
     void on_SetDrillButton_clicked();

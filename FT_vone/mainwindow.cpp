@@ -40,12 +40,15 @@ void MainWindow::on_pushButton_clicked()
             if(str[strlength].contains("error:")){
                 msgbox.critical(nullptr,"ERROR!",str[strlength].remove("error: "));
             }
+            if(str[strlength].contains("error:") && fullbridgeButton_clicked){
+                msgbox.critical(nullptr,"ERROR!",str[strlength].remove("error: "));
+                fullbridge_status(strlength);
+            }
             else
             {}
         }
         //Read Vone Values when Extract Button is clicked (in Database Page)
-        if (extractButton_clicked)
-        {
+        if (extractButton_clicked){
             str.filter(datas);
             for (int i=0; i<str.length();i++){
                 get_calibration(i);
@@ -54,10 +57,16 @@ void MainWindow::on_pushButton_clicked()
         if(probepinsButton_clicked)
         {
             str.filter(datas);
-            for (int i=0; i<str.length();i++)
-            {
+            for (int i=0; i<str.length();i++){
                 check_probepins(i);
             }
+        }
+        if(fullbridgeButton_clicked)
+        {
+           str.filter(datas);
+           for (int i=0; i<str.length();i++){
+            fullbridge_status(i);
+           }
         }
         else{}
     }
