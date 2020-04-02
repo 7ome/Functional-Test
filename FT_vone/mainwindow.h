@@ -41,8 +41,7 @@ public:
     QString SerialNum ;
     QString Skew;
     QString Backlash;
-    QSqlQueryModel * model = new QSqlQueryModel();
-    QSqlQuery* qry = new QSqlQuery(db);
+
 
 
 //Serial Communication

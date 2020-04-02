@@ -42,7 +42,7 @@ void MainWindow::on_pushButton_clicked()
             }
             if(str[strlength].contains("error:") && fullbridgeButton_clicked){
                 msgbox.critical(nullptr,"ERROR!",str[strlength].remove("error: "));
-                fullbridge_status(strlength);
+//                fullbridge_status(strlength);
             }
             else
             {}
@@ -65,7 +65,7 @@ void MainWindow::on_pushButton_clicked()
         {
            str.filter(datas);
            for (int i=0; i<str.length();i++){
-            fullbridge_status(i);
+//            fullbridge_status(i);
            }
         }
         else{}

@@ -54,22 +54,22 @@ void MainWindow::on_FullBridgeTestButton_clicked()
         msgbox.critical(nullptr,"Error!","Invalid Bridge Serial Number");
     }
 }
-void MainWindow::fullbridge_status(int i){
+//void MainWindow::fullbridge_status(int i){
 
-        if(qry->exec("SELECT description FROM issues WHERE description ='"+str[i].remove("error:  ")+"'")){
-            qDebug()<<"SELECT description FROM issues WHERE description ='"+str[i].remove("error:  ")+"'";
-            if(qry->isValid()){
-                qry->exec("INSERT INTO issues(description) VALUES('"+str[i]+")'");
-                qDebug()<<"INSERT INTO issues(description) VALUES('"+str[i]+")'";
-            }
-            else{
-                qDebug()<<qry->lastError();
-            }
-        }
-        else{
-            qDebug()<<qry->lastError();
-        }
-    }
+//        if(qry->exec("SELECT description FROM issues WHERE description ='"+str[i].remove("error:  ")+"'")){
+//            qDebug()<<"SELECT description FROM issues WHERE description ='"+str[i].remove("error:  ")+"'";
+//            if(qry->isValid()){
+//                qry->exec("INSERT INTO issues(description) VALUES('"+str[i]+")'");
+//                qDebug()<<"INSERT INTO issues(description) VALUES('"+str[i]+")'";
+//            }
+//            else{
+//                qDebug()<<qry->lastError();
+//            }
+//        }
+//        else{
+//            qDebug()<<qry->lastError();
+//        }
+//    }
 
 void MainWindow::on_ProbePinsButton_clicked(){
     sendcommand("M125\n");
