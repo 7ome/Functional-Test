@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
@@ -40,7 +41,6 @@ void MainWindow::on_pushButton_clicked()
             if(str[strlength].contains("error:")){
                 msgbox.critical(nullptr,"ERROR!",str[strlength].remove("error: "));
             }
-
             else
             {}
         }
@@ -73,28 +73,4 @@ void MainWindow::on_pushButton_clicked()
     });
 
 }
-void MainWindow::on_BSaveButton_clicked()
-{
-   QString bridgeline= ui->BridgeSN->text();
-   int i=0;
-   int errorID[5];
 
-   int xlim = ui->xlim_checkBox->checkState();
-   int probepins = ui->probepins_checkBox->checkState();
-   int checkbox = ui->spine_checkBox->checkState();
-   int zaxis = ui->zaxis_checkBox->checkState();
-   int wharness = ui->wharness_checkBox->checkState();
-   int othersB = ui->othersB_checkBox->checkState();
-
-int status[5]= {xlim,probepins,checkbox,zaxis,wharness};
-
-for(int x=0; x<5;x++){
-    if(status[x] == 1){
-        errorID[i]= x+1000;
-        qDebug()<<errorID[i]<<endl;
-        i++;
-
-    }
-    else{}
-}
-}

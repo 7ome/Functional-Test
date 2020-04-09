@@ -359,6 +359,11 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
       <property name="placeholderText">
        <string>Enter Serial Number</string>
       </property>
@@ -367,7 +372,7 @@
       <property name="geometry">
        <rect>
         <x>650</x>
-        <y>270</y>
+        <y>240</y>
         <width>81</width>
         <height>41</height>
        </rect>
@@ -380,7 +385,7 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>270</y>
+        <y>240</y>
         <width>81</width>
         <height>41</height>
        </rect>
@@ -413,7 +418,7 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>240</y>
+        <y>210</y>
         <width>161</width>
         <height>21</height>
        </rect>
@@ -508,7 +513,7 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>220</y>
+        <y>190</y>
         <width>70</width>
         <height>18</height>
        </rect>
@@ -523,26 +528,17 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QCheckBox" name="wharness_checkBox">
+     <widget class="QPushButton" name="clearB_Button">
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>190</y>
-        <width>91</width>
-        <height>18</height>
+        <y>280</y>
+        <width>171</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Wire harness</string>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="checked">
-       <bool>false</bool>
-      </property>
-      <property name="tristate">
-       <bool>true</bool>
+       <string>Clear Fields</string>
       </property>
      </widget>
     </widget>

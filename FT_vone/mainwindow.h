@@ -44,6 +44,8 @@ public:
 
 
 
+
+
 //Serial Communication
     QStringList str;
     QSerialPort serial;

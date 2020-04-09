@@ -4,7 +4,6 @@
 
 void MainWindow::on_HomeXButton_clicked()
 {
-
     sendcommand("G28 X\n");
     sendcommand("G01 X5 F1000\n");
     sendcommand("M18\n");
@@ -24,7 +23,6 @@ void MainWindow::on_SpinEButton_clicked()
         sendcommand("G01 E5.5 F180\n");
     }
     delay(1);
-    sendcommand("G04 P1\n");
     sendcommand("G01 E0 F180\n");
     sendcommand("M18\n");
 }
@@ -39,38 +37,6 @@ void MainWindow::on_HomeZUButton_clicked()
     sendcommand("G28 Z\n");
     sendcommand("M18\n");
 }
-//void MainWindow::on_FullBridgeTestButton_clicked()
-//{
-//    QString bridgeline= ui->BridgeSN->text();
-
-//    if(bridgeline.startsWith("B")){
-//        fullbridgeButton_clicked=true;
-//        on_HomeXButton_clicked();
-//        on_SpeedXButton_clicked();
-//        on_HomeZDButton_clicked();
-//        on_HomeZUButton_clicked();
-//    }
-//    else{
-//        msgbox.critical(nullptr,"Error!","Invalid Bridge Serial Number");
-//    }
-//}
-//void MainWindow::fullbridge_status(int i){
-
-//        if(qry->exec("SELECT description FROM issues WHERE description ='"+str[i].remove("error:  ")+"'")){
-//            qDebug()<<"SELECT description FROM issues WHERE description ='"+str[i].remove("error:  ")+"'";
-//            if(qry->isValid()){
-//                qry->exec("INSERT INTO issues(description) VALUES('"+str[i]+")'");
-//                qDebug()<<"INSERT INTO issues(description) VALUES('"+str[i]+")'";
-//            }
-//            else{
-//                qDebug()<<qry->lastError();
-//            }
-//        }
-//        else{
-//            qDebug()<<qry->lastError();
-//        }
-//    }
-
 void MainWindow::on_ProbePinsButton_clicked(){
     sendcommand("M125\n");
     probepinsButton_clicked = true;
@@ -159,3 +125,52 @@ void MainWindow::check_probepins(int i)
     else{
     }
 }
+void MainWindow::on_clearB_Button_clicked()
+{
+    ui->BridgeSN->clear();
+    ui->Bridgeother->clear();
+    ui->xlim_checkBox->setChecked(0);
+    ui->spine_checkBox->setChecked(0);
+    ui->probepins_checkBox->setChecked(0);
+    ui->zaxis_checkBox->setChecked(0);
+    ui->othersB_checkBox->setChecked(0);
+}
+void MainWindow::on_BSaveButton_clicked()
+{
+   QString errorID;
+   QString bridgeline= ui->BridgeSN->text();
+   QString notes = ui->Bridgeother->text();
+
+   int xlim = ui->xlim_checkBox->checkState();
+   int probepins = ui->probepins_checkBox->checkState();
+   int spine = ui->spine_checkBox->checkState();
+   int zaxis = ui->zaxis_checkBox->checkState();
+   int othersB = ui->othersB_checkBox->checkState();
+
+int status[4]= {xlim,spine,probepins,zaxis};
+for(int i=0; i<4;i++){
+    errorID +=QString::number(status[i]);
+}
+QSqlQuery* qry = new QSqlQuery(db);
+if(!qry->exec("INSERT into bridgeinfo ( BSerial, errorID, note, status) VALUES ('"+bridgeline+"','"+errorID+"','"+notes+"','""Pending""')")){
+    qDebug()<<"error:" <<qry->lastError();
+}
+else
+{
+    qDebug()<<bridgeline<<" Saved Successfully!"<<endl;
+}
+}
+void MainWindow::on_BPassButton_clicked()
+{
+    QString bridgeline= ui->BridgeSN->text();
+    QSqlQuery* qry = new QSqlQuery(db);
+    if(!qry->exec("Update bridgeinfo SET status='PASSED' WHERE BSerial="+bridgeline+";")){
+        qDebug()<<"error:" <<qry->lastError();
+    }
+    else
+    {
+       qDebug()<<bridgeline<<" Updated to PASSED!"<<endl;
+      on_clearB_Button_clicked();
+    }
+}
+
