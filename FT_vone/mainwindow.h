@@ -52,7 +52,6 @@ public:
     const char *gline[30];
     bool extractButton_clicked;
     bool probepinsButton_clicked=false;
-    bool fullbridgeButton_clicked;
     bool serialcom = false;
     bool dbcom;
     int motorspeed;
@@ -91,11 +90,10 @@ private slots:
     void on_SpinEButton_clicked();
     void on_HomeZDButton_clicked();
     void on_HomeZUButton_clicked();
-    void on_FullBridgeTestButton_clicked();
+//    void on_FullBridgeTestButton_clicked();
     void on_ProbePinsButton_clicked();
     void probestatus();
     void check_probepins(int i);
-    void fullbridge_status(int i);
 
  //Drill
     void on_SetDrillButton_clicked();
@@ -112,6 +110,9 @@ private slots:
     void on_SaveButton_clicked();
     void get_calibration(int i);
     void on_dbButton_clicked();
+
+
+    void on_BSaveButton_clicked();
 
 private:
     Ui::MainWindow *ui;

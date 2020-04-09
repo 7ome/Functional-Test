@@ -295,19 +295,6 @@
        <string>Bridge</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="FullBridgeTestButton">
-      <property name="geometry">
-       <rect>
-        <x>570</x>
-        <y>110</y>
-        <width>161</width>
-        <height>151</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Full Bridge Test</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="ProbePinsButton">
       <property name="geometry">
        <rect>
@@ -334,7 +321,7 @@
        <bool>false</bool>
       </property>
       <property name="value">
-       <number>100</number>
+       <number>-1</number>
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
@@ -366,7 +353,7 @@
      <widget class="QLineEdit" name="BridgeSN">
       <property name="geometry">
        <rect>
-        <x>570</x>
+        <x>550</x>
         <y>70</y>
         <width>161</width>
         <height>31</height>
@@ -387,6 +374,175 @@
       </property>
       <property name="text">
        <string>PASS</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="BSaveButton">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>270</y>
+        <width>81</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>100</y>
+        <width>41</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Errors:</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Bridgeother">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>240</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Specify Error</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="xlim_checkBox">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>130</y>
+        <width>81</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>X-Lim Switch</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="probepins_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>160</y>
+        <width>70</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Probe Pins</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="zaxis_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>130</y>
+        <width>70</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Z-Axis</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="spine_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>160</y>
+        <width>70</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Spin E</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="othersB_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>220</y>
+        <width>70</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Others</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="wharness_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>190</y>
+        <width>91</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Wire harness</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -412,8 +568,8 @@
      <widget class="QSlider" name="MotorSpeedSlider">
       <property name="geometry">
        <rect>
-        <x>29</x>
-        <y>210</y>
+        <x>40</x>
+        <y>290</y>
         <width>261</width>
         <height>20</height>
        </rect>
@@ -434,10 +590,10 @@
      <widget class="QPushButton" name="SpinMotorButton">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>70</y>
+        <x>40</x>
+        <y>180</y>
         <width>261</width>
-        <height>121</height>
+        <height>91</height>
        </rect>
       </property>
       <property name="text">
@@ -447,10 +603,10 @@
      <widget class="QPushButton" name="SetDrillButton">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>20</y>
-        <width>321</width>
-        <height>141</height>
+        <x>40</x>
+        <y>80</y>
+        <width>261</width>
+        <height>91</height>
        </rect>
       </property>
       <property name="text">
@@ -461,7 +617,7 @@
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>170</y>
+        <y>30</y>
         <width>321</width>
         <height>101</height>
        </rect>
@@ -473,8 +629,8 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>240</y>
+        <x>150</x>
+        <y>320</y>
         <width>71</width>
         <height>16</height>
        </rect>
@@ -487,7 +643,7 @@
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>280</y>
+        <y>140</y>
         <width>151</width>
         <height>51</height>
        </rect>
@@ -499,14 +655,98 @@
      <widget class="QPushButton" name="NoiseButton">
       <property name="geometry">
        <rect>
-        <x>564</x>
-        <y>280</y>
+        <x>560</x>
+        <y>140</y>
         <width>151</width>
         <height>51</height>
        </rect>
       </property>
       <property name="text">
        <string>Noise</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="DSaveButton">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>300</y>
+        <width>131</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="noise_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>230</y>
+        <width>70</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Noise</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QCheckBox" name="othersd_checkBox">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>250</y>
+        <width>70</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Others:</string>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+      <property name="tristate">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="Drillother">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>270</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Specify error</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>390</x>
+        <y>200</y>
+        <width>61</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Error:</string>
       </property>
      </widget>
     </widget>

@@ -12,12 +12,9 @@ noise indication if pass or fail
 
 serial programmer
  
-error detection
-pop up message box
 
-status connections
-serial com
-database com
+
+
 
 full bridge test requires serial number
 

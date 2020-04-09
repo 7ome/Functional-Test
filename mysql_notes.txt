@@ -22,4 +22,4 @@ CREATE TABLE issues(
 alter table issues auto_increment=1000;
 
 Alter Table bridgeinfo
-ADD Foreign KEY errorID reference issues(errorID);
+ADD Constraint Foreign KEY issues reference issues(errorID);

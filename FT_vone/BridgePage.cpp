@@ -39,21 +39,21 @@ void MainWindow::on_HomeZUButton_clicked()
     sendcommand("G28 Z\n");
     sendcommand("M18\n");
 }
-void MainWindow::on_FullBridgeTestButton_clicked()
-{
-    QString bridgeline= ui->BridgeSN->text();
+//void MainWindow::on_FullBridgeTestButton_clicked()
+//{
+//    QString bridgeline= ui->BridgeSN->text();
 
-    if(bridgeline.startsWith("B")){
-        fullbridgeButton_clicked=true;
-        on_HomeXButton_clicked();
-        on_SpeedXButton_clicked();
-        on_HomeZDButton_clicked();
-        on_HomeZUButton_clicked();
-    }
-    else{
-        msgbox.critical(nullptr,"Error!","Invalid Bridge Serial Number");
-    }
-}
+//    if(bridgeline.startsWith("B")){
+//        fullbridgeButton_clicked=true;
+//        on_HomeXButton_clicked();
+//        on_SpeedXButton_clicked();
+//        on_HomeZDButton_clicked();
+//        on_HomeZUButton_clicked();
+//    }
+//    else{
+//        msgbox.critical(nullptr,"Error!","Invalid Bridge Serial Number");
+//    }
+//}
 //void MainWindow::fullbridge_status(int i){
 
 //        if(qry->exec("SELECT description FROM issues WHERE description ='"+str[i].remove("error:  ")+"'")){
