@@ -116,6 +116,10 @@ private slots:
 
     void on_BSaveButton_clicked();
 
+    void on_BPassButton_clicked();
+
+    void on_clearB_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

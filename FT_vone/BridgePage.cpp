@@ -137,28 +137,28 @@ void MainWindow::on_clearB_Button_clicked()
 }
 void MainWindow::on_BSaveButton_clicked()
 {
-   QString errorID;
-   QString bridgeline= ui->BridgeSN->text();
-   QString notes = ui->Bridgeother->text();
+    QString errorID;
+    QString bridgeline= ui->BridgeSN->text();
+    QString notes = ui->Bridgeother->text();
 
-   int xlim = ui->xlim_checkBox->checkState();
-   int probepins = ui->probepins_checkBox->checkState();
-   int spine = ui->spine_checkBox->checkState();
-   int zaxis = ui->zaxis_checkBox->checkState();
-   int othersB = ui->othersB_checkBox->checkState();
+    int xlim = ui->xlim_checkBox->checkState();
+    int probepins = ui->probepins_checkBox->checkState();
+    int spine = ui->spine_checkBox->checkState();
+    int zaxis = ui->zaxis_checkBox->checkState();
+    int othersB = ui->othersB_checkBox->checkState();
 
-int status[4]= {xlim,spine,probepins,zaxis};
-for(int i=0; i<4;i++){
-    errorID +=QString::number(status[i]);
-}
-QSqlQuery* qry = new QSqlQuery(db);
-if(!qry->exec("INSERT into bridgeinfo ( BSerial, errorID, note, status) VALUES ('"+bridgeline+"','"+errorID+"','"+notes+"','""Pending""')")){
-    qDebug()<<"error:" <<qry->lastError();
-}
-else
-{
-    qDebug()<<bridgeline<<" Saved Successfully!"<<endl;
-}
+    int status[4]= {xlim,spine,probepins,zaxis};
+    for(int i=0; i<4;i++){
+        errorID +=QString::number(status[i]);
+    }
+    QSqlQuery* qry = new QSqlQuery(db);
+    if(!qry->exec("INSERT into bridgeinfo ( BSerial, errorID, note, status) VALUES ('"+bridgeline+"','"+errorID+"','"+notes+"','""Pending""')")){
+        qDebug()<<"error:" <<qry->lastError();
+    }
+    else
+    {
+        qDebug()<<bridgeline<<" Saved Successfully!"<<endl;
+    }
 }
 void MainWindow::on_BPassButton_clicked()
 {
@@ -169,8 +169,8 @@ void MainWindow::on_BPassButton_clicked()
     }
     else
     {
-       qDebug()<<bridgeline<<" Updated to PASSED!"<<endl;
-      on_clearB_Button_clicked();
+        qDebug()<<bridgeline<<" Updated to PASSED!"<<endl;
+        on_clearB_Button_clicked();
     }
 }
 
