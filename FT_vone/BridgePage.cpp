@@ -164,6 +164,7 @@ void MainWindow::on_BPassButton_clicked()
 {
     QString bridgeline= ui->BridgeSN->text();
     QSqlQuery* qry = new QSqlQuery(db);
+    on_BSaveButton_clicked();
     if(!qry->exec("Update bridgeinfo SET status='PASSED' WHERE BSerial="+bridgeline+";")){
         qDebug()<<"error:" <<qry->lastError();
     }
