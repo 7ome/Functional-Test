@@ -34,6 +34,7 @@ void MainWindow::on_SaveButton_clicked()
     }
     else
     {
+        qDebug()<<SerialNum<<" Datas Saved Successfully!"<<endl;
     }
 }
 void MainWindow::get_calibration(int i)

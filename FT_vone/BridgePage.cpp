@@ -24,7 +24,7 @@ void MainWindow::on_SpinEButton_clicked()
     }
     delay(1);
     sendcommand("G01 E0 F180\n");
-    sendcommand("M18\n");
+//    sendcommand("M18\n");
 }
 void MainWindow::on_HomeZDButton_clicked()
 {
@@ -118,6 +118,7 @@ void MainWindow::check_probepins(int i)
         probedisconnected=true;
         probetriggered=true;
         probestatus();
+
     }
     if(str[i].contains("Probe: Probe Mounted") && !probemounted){
         qDebug("Disconnect Probe to begin");
@@ -165,12 +166,12 @@ void MainWindow::on_BPassButton_clicked()
     QString bridgeline= ui->BridgeSN->text();
     QSqlQuery* qry = new QSqlQuery(db);
     on_BSaveButton_clicked();
-    if(!qry->exec("Update bridgeinfo SET status='PASSED' WHERE BSerial="+bridgeline+";")){
+    if(!qry->exec("Update bridgeinfo SET status='Passed' WHERE BSerial='"+bridgeline+"';")){
         qDebug()<<"error:" <<qry->lastError();
     }
     else
     {
-        qDebug()<<bridgeline<<" Updated to PASSED!"<<endl;
+        qDebug()<<bridgeline<<" Updated to Passed!"<<endl;
         on_clearB_Button_clicked();
     }
 }
