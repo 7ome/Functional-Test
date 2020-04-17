@@ -95,7 +95,7 @@
      <number>5</number>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QPushButton" name="BridgeButton">
@@ -353,7 +353,7 @@
      <widget class="QLineEdit" name="BridgeSN">
       <property name="geometry">
        <rect>
-        <x>550</x>
+        <x>560</x>
         <y>70</y>
         <width>161</width>
         <height>31</height>
@@ -397,7 +397,7 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>550</x>
+        <x>560</x>
         <y>100</y>
         <width>41</width>
         <height>31</height>
@@ -434,7 +434,7 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>130</y>
+        <y>140</y>
         <width>81</width>
         <height>18</height>
        </rect>
@@ -456,7 +456,7 @@
       <property name="geometry">
        <rect>
         <x>560</x>
-        <y>160</y>
+        <y>170</y>
         <width>70</width>
         <height>18</height>
        </rect>
@@ -475,7 +475,7 @@
       <property name="geometry">
        <rect>
         <x>660</x>
-        <y>130</y>
+        <y>140</y>
         <width>70</width>
         <height>18</height>
        </rect>
@@ -494,32 +494,13 @@
       <property name="geometry">
        <rect>
         <x>660</x>
-        <y>160</y>
+        <y>170</y>
         <width>70</width>
         <height>18</height>
        </rect>
       </property>
       <property name="text">
        <string>Spin E</string>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="tristate">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QCheckBox" name="othersB_checkBox">
-      <property name="geometry">
-       <rect>
-        <x>560</x>
-        <y>190</y>
-        <width>70</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Others</string>
       </property>
       <property name="checkable">
        <bool>false</bool>
@@ -664,9 +645,9 @@
      <widget class="QPushButton" name="DSaveButton">
       <property name="geometry">
        <rect>
-        <x>400</x>
-        <y>300</y>
-        <width>131</width>
+        <x>390</x>
+        <y>280</y>
+        <width>151</width>
         <height>51</height>
        </rect>
       </property>
@@ -677,8 +658,8 @@
      <widget class="QCheckBox" name="noise_checkBox">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>230</y>
+        <x>580</x>
+        <y>220</y>
         <width>70</width>
         <height>21</height>
        </rect>
@@ -693,30 +674,11 @@
        <bool>true</bool>
       </property>
      </widget>
-     <widget class="QCheckBox" name="othersd_checkBox">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>250</y>
-        <width>70</width>
-        <height>18</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Others:</string>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-      <property name="tristate">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QLineEdit" name="Drillother">
       <property name="geometry">
        <rect>
-        <x>550</x>
-        <y>270</y>
+        <x>580</x>
+        <y>250</y>
         <width>111</width>
         <height>21</height>
        </rect>
@@ -728,7 +690,7 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>390</x>
+        <x>530</x>
         <y>200</y>
         <width>61</width>
         <height>21</height>
@@ -743,6 +705,45 @@
       </property>
       <property name="text">
        <string>Error:</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton2_5">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>230</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>|mm|&gt;2.5</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton3_5">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>250</y>
+        <width>83</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>|mm|&gt;3.5</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="DPassButton">
+      <property name="geometry">
+       <rect>
+        <x>560</x>
+        <y>280</y>
+        <width>151</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pass</string>
       </property>
      </widget>
     </widget>

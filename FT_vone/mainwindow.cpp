@@ -71,7 +71,5 @@ void MainWindow::on_pushButton_clicked()
         serialcom=false;
         update_comstatus();
     });
-
 }
-
 

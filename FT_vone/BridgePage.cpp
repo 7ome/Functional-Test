@@ -134,7 +134,6 @@ void MainWindow::on_clearB_Button_clicked()
     ui->spine_checkBox->setChecked(0);
     ui->probepins_checkBox->setChecked(0);
     ui->zaxis_checkBox->setChecked(0);
-    ui->othersB_checkBox->setChecked(0);
 }
 void MainWindow::on_BSaveButton_clicked()
 {
@@ -146,7 +145,6 @@ void MainWindow::on_BSaveButton_clicked()
     int probepins = ui->probepins_checkBox->checkState();
     int spine = ui->spine_checkBox->checkState();
     int zaxis = ui->zaxis_checkBox->checkState();
-    int othersB = ui->othersB_checkBox->checkState();
 
     int status[4]= {xlim,spine,probepins,zaxis};
     for(int i=0; i<4;i++){

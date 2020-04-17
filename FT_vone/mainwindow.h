@@ -120,6 +120,10 @@ private slots:
 
     void on_clearB_Button_clicked();
 
+    void on_DSaveButton_clicked();
+
+    void on_DPassButton_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

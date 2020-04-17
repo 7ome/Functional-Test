@@ -23,3 +23,10 @@ alter table issues auto_increment=1000;
 
 Alter Table bridgeinfo
 ADD Constraint Foreign KEY issues reference issues(errorID);
+
+Create table drillinfo(
+	TransID INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+	Runout VARCHAR(4) NOT NULL,
+	Noise TEXT NOT NULL,
+	Other TEXT,
+	Date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP());

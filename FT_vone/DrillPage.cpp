@@ -67,3 +67,35 @@ void MainWindow::on_NoiseButton_clicked()
     delay(1);
     sendcommand("D110 R0\n");
 }
+void MainWindow::on_DSaveButton_clicked()
+{
+    QString runout;
+    bool noise = ui->noise_checkBox->isChecked();
+    QString drillOther= ui->Drillother->text();
+    if(ui->radioButton2_5->isChecked()){
+        runout = ">2.5";
+    }
+    if(ui->radioButton3_5->isChecked()){
+        runout = ">3.5";
+    }
+    else{
+        runout = "<2.5";
+    }
+    QSqlQuery* qry = new QSqlQuery(db);
+    if(!qry->exec("INSERT into drillinfo ( runout, noise, other) VALUES ('"+runout+"','"+noise+"','"+drillOther+"')")){
+        qDebug()<<"error:" <<qry->lastError();
+    }
+    else{
+        qDebug()<<" Saved Successfully!"<<endl;
+    }
+}
+void MainWindow::on_DPassButton_clicked()
+{
+    QSqlQuery* qry = new QSqlQuery(db);
+    if(!qry->exec("INSERT into drillinfo ( runout, noise, other) VALUES ('<2.5','0','')")){
+        qDebug()<<"error:" <<qry->lastError();
+    }
+    else{
+        qDebug()<<" Saved Successfully!"<<endl;
+    }
+}
