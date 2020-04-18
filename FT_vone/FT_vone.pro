@@ -3,7 +3,7 @@ QT       += core gui \
 QT       += serialport
 QT       += gui
 QT += sql
-
+QT += charts
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11

@@ -13,6 +13,14 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 
+#include <QtCharts/QChartView>
+#include <QtCharts/QBarSeries>
+#include <QtCharts/QBarSet>
+#include <QtCharts/QLegend>
+#include <QtCharts/QBarCategoryAxis>
+#include <QtCharts/QValueAxis>
+
+QT_CHARTS_USE_NAMESPACE
 
 
 QT_BEGIN_NAMESPACE
@@ -123,6 +131,8 @@ private slots:
     void on_DSaveButton_clicked();
 
     void on_DPassButton_clicked();
+
+    void on_ViewGraphButton_clicked();
 
 private:
     Ui::MainWindow *ui;
