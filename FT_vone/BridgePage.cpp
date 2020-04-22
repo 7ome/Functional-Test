@@ -24,7 +24,7 @@ void MainWindow::on_SpinEButton_clicked()
     }
     delay(1);
     sendcommand("G01 E0 F180\n");
-//    sendcommand("M18\n");
+    sendcommand("M18\n");
 }
 void MainWindow::on_HomeZDButton_clicked()
 {

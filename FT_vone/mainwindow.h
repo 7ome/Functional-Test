@@ -134,6 +134,8 @@ private slots:
 
     void on_ViewGraphButton_clicked();
 
+    void on_clearD_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

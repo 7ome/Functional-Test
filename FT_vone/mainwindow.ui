@@ -95,7 +95,7 @@
      <number>5</number>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QPushButton" name="BridgeButton">
@@ -744,6 +744,19 @@
       </property>
       <property name="text">
        <string>Pass</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="clearD_Button">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>340</y>
+        <width>231</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear Fields</string>
       </property>
      </widget>
     </widget>

@@ -53,8 +53,8 @@ void MainWindow::on_pushButton_clicked()
         }
         if(probepinsButton_clicked)
         {           
-            QStringList result = str.filter(datas);
-            for (int i=0; i<result.length();i++){
+            str.filter(datas);
+            for (int i=0; i<str.length();i++){
                 check_probepins(i);
             }
         }
@@ -112,3 +112,4 @@ void MainWindow::on_ViewGraphButton_clicked()
       window.resize(420, 300);
       window.show();
 }
+

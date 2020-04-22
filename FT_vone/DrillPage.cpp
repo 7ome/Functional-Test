@@ -64,13 +64,21 @@ void MainWindow::on_NoiseButton_clicked()
     sendcommand("D110 R75\n");
     sendcommand("D110 R50\n");
     sendcommand("D110 R25\n");
-    delay(1);
     sendcommand("D110 R0\n");
 }
+void MainWindow::on_clearD_Button_clicked()
+{
+    ui->Drillother->setText("");
+     ui->noise_checkBox->setChecked(0);
+      ui->radioButton2_5->setChecked(0);
+       ui->radioButton3_5->setChecked(0);
+}
+
 void MainWindow::on_DSaveButton_clicked()
 {
     QString runout;
-    bool noise = ui->noise_checkBox->isChecked();
+
+    QString noise = QString::number(ui->noise_checkBox->checkState());
     QString drillOther= ui->Drillother->text();
     if(ui->radioButton2_5->isChecked()){
         runout = ">2.5";
@@ -87,6 +95,7 @@ void MainWindow::on_DSaveButton_clicked()
     }
     else{
         qDebug()<<" Saved Successfully!"<<endl;
+        on_clearD_Button_clicked();
     }
 }
 void MainWindow::on_DPassButton_clicked()
@@ -97,5 +106,7 @@ void MainWindow::on_DPassButton_clicked()
     }
     else{
         qDebug()<<" Saved Successfully!"<<endl;
+        on_clearD_Button_clicked();
     }
 }
+
