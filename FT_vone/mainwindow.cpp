@@ -109,7 +109,9 @@ void MainWindow::on_ViewGraphButton_clicked()
    chartView->setRenderHint(QPainter::Antialiasing);
 
    window.setCentralWidget(chartView);
-      window.resize(420, 300);
-      window.show();
+   window.resize(420, 300);
+   show();
 }
+
+
 

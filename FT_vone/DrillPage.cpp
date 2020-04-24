@@ -70,30 +70,21 @@ void MainWindow::on_clearD_Button_clicked()
 {
     ui->Drillother->setText("");
      ui->noise_checkBox->setChecked(0);
-      ui->radioButton2_5->setChecked(0);
-       ui->radioButton3_5->setChecked(0);
+      ui->badrunout_checkBox->setChecked(0);
 }
 
 void MainWindow::on_DSaveButton_clicked()
 {
-    QString runout;
-
+    QString badrunout= QString::number(ui->badrunout_checkBox->checkState());;
     QString noise = QString::number(ui->noise_checkBox->checkState());
     QString drillOther= ui->Drillother->text();
-    if(ui->radioButton2_5->isChecked()){
-        runout = ">2.5";
-    }
-    if(ui->radioButton3_5->isChecked()){
-        runout = ">3.5";
-    }
-    else{
-        runout = "<2.5";
-    }
+
     QSqlQuery* qry = new QSqlQuery(db);
-    if(!qry->exec("INSERT into drillinfo ( runout, noise, other) VALUES ('"+runout+"','"+noise+"','"+drillOther+"')")){
+    if(!qry->exec("INSERT into drillinfo ( runout, noise, other) VALUES ('"+badrunout+"','"+noise+"','"+drillOther+"')")){
         qDebug()<<"error:" <<qry->lastError();
     }
     else{
+        msgbox.information(nullptr,"Saved","Saved Succeesfull!");
         qDebug()<<" Saved Successfully!"<<endl;
         on_clearD_Button_clicked();
     }
@@ -101,10 +92,11 @@ void MainWindow::on_DSaveButton_clicked()
 void MainWindow::on_DPassButton_clicked()
 {
     QSqlQuery* qry = new QSqlQuery(db);
-    if(!qry->exec("INSERT into drillinfo ( runout, noise, other) VALUES ('<2.5','0','')")){
+    if(!qry->exec("INSERT into drillinfo ( runout, noise, other) VALUES ('0','0','')")){
         qDebug()<<"error:" <<qry->lastError();
     }
     else{
+        msgbox.information(nullptr,"Saved","Saved Succeesfull!");
         qDebug()<<" Saved Successfully!"<<endl;
         on_clearD_Button_clicked();
     }

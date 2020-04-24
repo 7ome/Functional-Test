@@ -1,10 +1,6 @@
-database(serial number, scalling and skew , backlash, date )
 
 loop serial com
 ask if vone printer
-
-for bridges that didn't pass the first time, ask for solution. Save the solution into database. also use it as a fix suggestion next time same 
-error appears.
 
 
 run out data needs to be saved
@@ -12,11 +8,11 @@ noise indication if pass or fail
 
 serial programmer
  
-
-
-
-
-full bridge test requires serial number
-
+error on probe testing (random?)
 https://www.qtcentre.org/threads/61756-ASSERT-failure-in-QList-lt-T-gt-operator-quot-index-out-of-range-quot-file
 on probe detection
+
+msgbox when saving/passing probes
+charts in database page
+write directly on mysql from database page
+logo icon

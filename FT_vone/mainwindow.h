@@ -51,9 +51,6 @@ public:
     QString Backlash;
 
 
-
-
-
 //Serial Communication
     QStringList str;
     QSerialPort serial;
@@ -135,6 +132,8 @@ private slots:
     void on_ViewGraphButton_clicked();
 
     void on_clearD_Button_clicked();
+
+    void on_sqlline_returnPressed();
 
 private:
     Ui::MainWindow *ui;

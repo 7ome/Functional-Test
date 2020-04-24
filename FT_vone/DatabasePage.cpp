@@ -14,14 +14,31 @@ void MainWindow::on_SearchButton_clicked()
     QSqlQueryModel * model = new QSqlQueryModel();
     QSqlQuery* qry = new QSqlQuery(db);
     QString searchline =ui->Searchline->text();
-    if(searchline==""){
+    bool VoneRButton = ui->VoneRButton->isChecked();
+    bool BridgeRButton = ui->BridgeRButton->isChecked();
+
+    if(VoneRButton && searchline==NULL){
         if(!qry->exec("select * from unitinfo;")){
             qDebug()<<"error:" <<qry->lastError();
         }
     }
-    else{
-        qry->exec("Select * From unitinfo WHERE Serial='"+searchline+"'");
+    if(BridgeRButton && searchline==NULL){
+        if(!qry->exec("select * from bridgeinfo;")){
+            qDebug()<<"error:" <<qry->lastError();
+        }
     }
+    if(VoneRButton && searchline!=NULL){
+        if(!qry->exec("select '"+searchline+"' from unitinfo;")){
+            qDebug()<<"error:" <<qry->lastError();
+        }
+    }
+    if(BridgeRButton && searchline!=NULL){
+       if(!qry->exec("select '"+searchline+"' from bridgeinfo;")){
+            qDebug()<<"error:" <<qry->lastError();
+        }
+    }
+    else{
+      }
     model->setQuery(*qry);
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();
@@ -84,8 +101,24 @@ void MainWindow::on_dbButton_clicked()
         dbcom=true;
         update_comstatus();
     }
-   else{
+    else{
         qDebug()<<"error"<<db.lastError();
         dbcom=false;
     }
+}
+void MainWindow::on_sqlline_returnPressed()
+{
+    QSqlQuery* qry = new QSqlQuery(db);
+    QString sql_cmdline =ui->sqlline->text();
+    QSqlQueryModel * model = new QSqlQueryModel();
+    const char *ready = sql_cmdline.toLatin1().data();
+    if(!qry->exec(ready)){
+        qDebug()<<"error:" <<qry->lastError();
+    }
+    else{
+        ui->sqlline->clear();
+    }
+    model->setQuery(*qry);
+    ui->tableView->setModel(model);
+    ui->tableView->resizeColumnsToContents();
 }
