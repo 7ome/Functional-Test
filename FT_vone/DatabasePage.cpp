@@ -28,12 +28,12 @@ void MainWindow::on_SearchButton_clicked()
         }
     }
     if(VoneRButton && searchline!=NULL){
-        if(!qry->exec("select '"+searchline+"' from unitinfo;")){
+        if(!qry->exec("select * from unitinfo where Serial=' "+searchline+"';")){
             qDebug()<<"error:" <<qry->lastError();
         }
     }
     if(BridgeRButton && searchline!=NULL){
-       if(!qry->exec("select '"+searchline+"' from bridgeinfo;")){
+       if(!qry->exec("select * from bridgeinfo where BSerial='"+searchline+"';")){
             qDebug()<<"error:" <<qry->lastError();
         }
     }

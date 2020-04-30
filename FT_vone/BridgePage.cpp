@@ -76,7 +76,7 @@ void MainWindow:: probestatus()
 /*this is a weird take on probe pin testing
 probe pins has only 3 ouputs from the printer; mounted, not mounted and triggered
 the test requires to
-1st - check if any attaachment is mounted before starting
+1st - check if any attachment is mounted before starting
 2nd - ask user to mount probe
 3rd - ask user to trigger probe
 4th - ask user to untrigger probe (printer just returns mounted)
