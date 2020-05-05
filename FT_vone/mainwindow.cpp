@@ -4,10 +4,12 @@
 #include <iostream>
 #include <sstream>
 
+
 using namespace std;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+
 {
     ui->setupUi(this);
     ui->textBrowser->setText("Serial Connection: \tDisconnected\nDatabase Connection: \tDisconnected");
@@ -25,7 +27,7 @@ void MainWindow:: delay(int sec)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 void MainWindow::on_pushButton_clicked()
-{    
+{
     initialize_serialcom();
     //this is called when datas are received
     QObject::connect(&serial, &QSerialPort::readyRead, [&]
@@ -52,7 +54,7 @@ void MainWindow::on_pushButton_clicked()
             }
         }
         if(probepinsButton_clicked)
-        {           
+        {
             str.filter(datas);
             for (int i=0; i<str.length();i++){
                 check_probepins(i);
@@ -74,7 +76,8 @@ void MainWindow::on_pushButton_clicked()
 }
 void MainWindow::on_ViewGraphButton_clicked()
 {
-   QMainWindow window;
+
+    QMainWindow secwindow;
    QChart *chart = new QChart();
    QBarCategoryAxis *axisX = new QBarCategoryAxis();
    QValueAxis *axisY = new QValueAxis();
@@ -108,9 +111,15 @@ void MainWindow::on_ViewGraphButton_clicked()
    QChartView *chartView = new QChartView(chart);
    chartView->setRenderHint(QPainter::Antialiasing);
 
-   window.setCentralWidget(chartView);
-   window.resize(420, 300);
-   show();
+
+ secwindow.resize(420,300);
+ secwindow.show();
+
+//    setCentralWidget(chartView);
+//    resize(420, 300);
+//    show();
+
+
 }
 
 
