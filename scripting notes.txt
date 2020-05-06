@@ -16,3 +16,5 @@ msgbox when saving/passing probes
 charts in database page
 write directly on mysql from database page
 logo icon
+
+https://doc.qt.io/qt-5/qtabwidget.html

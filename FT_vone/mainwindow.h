@@ -68,6 +68,8 @@ public:
     bool probedisconnected=false;
     bool firstrun=false;
     int countdown = 10;
+//Probe Page
+    bool probetest_clicked;
 
 QMessageBox msgbox;
     MainWindow(QWidget *parent = nullptr);
@@ -134,6 +136,10 @@ private slots:
     void on_clearD_Button_clicked();
 
     void on_sqlline_returnPressed();
+
+    void on_TestProbe_Button_clicked();
+
+    void probe_measurements(int i);
 
 private:
     Ui::MainWindow *ui;

@@ -26,6 +26,7 @@ SOURCES += \
     DatabasePage.cpp \
     DrillPage.cpp \
     HomePage.cpp \
+    ProbePage.cpp \
     com.cpp \
     main.cpp \
     mainwindow.cpp

@@ -60,6 +60,13 @@ void MainWindow::on_pushButton_clicked()
                 check_probepins(i);
             }
         }
+        if(probetest_clicked){
+            str.filter(datas);
+            for (int i=0; i<str.length();i++){
+                probe_measurements(i);
+            }
+
+        }
         else{}
     }
     );
@@ -121,6 +128,5 @@ void MainWindow::on_ViewGraphButton_clicked()
 
 
 }
-
 
 
