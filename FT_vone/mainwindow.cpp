@@ -65,12 +65,15 @@ void MainWindow::on_pushButton_clicked()
             for (int i=0; i<str.length();i++){
                 probe_measurements(i);
             }
+        }
+        else{
 
         }
-        else{}
+        datas.clear();
     }
+
     );
-    datas.clear();
+
     //this is called when serial com error occurs
     QObject::connect(&serial,static_cast<void(QSerialPort::*)(QSerialPort::SerialPortError)>
                      (&QSerialPort::error),
