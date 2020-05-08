@@ -43,7 +43,7 @@ class MainWindow : public QMainWindow
 
 public:
 
- //MYSQL
+    //MYSQL
 
     QSqlDatabase db;
     QString SerialNum ;
@@ -51,7 +51,7 @@ public:
     QString Backlash;
 
 
-//Serial Communication
+    //Serial Communication
     QStringList str;
     QSerialPort serial;
     QString datas;
@@ -62,16 +62,16 @@ public:
     bool serialcom = false;
     bool dbcom;
     int motorspeed;
-//Probe testing
+    //Probe testing
     bool probemounted=false;
     bool probetriggered=false;
     bool probedisconnected=false;
     bool firstrun=false;
     int countdown = 10;
-//Probe Page
+    //Probe Page
     bool probetest_clicked;
 
-QMessageBox msgbox;
+    QMessageBox msgbox;
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
@@ -79,10 +79,10 @@ private slots:
     void delay(int sec);
     void sendcommand(const char *gCode);
 
-  //Serial Com
+    //Serial Com
     void initialize_serialcom();
 
- //Main Menu
+    //Main Menu
     void on_pushButton_clicked();
     void on_MenuButton_clicked();
     void on_BridgeButton_clicked();
@@ -92,19 +92,19 @@ private slots:
     void on_HomeButton_clicked();
     void update_comstatus();
 
- //Bridge
+    //Bridge
     void on_HomeXButton_clicked();
     void on_ExtractButton_clicked();
     void on_SpeedXButton_clicked();
     void on_SpinEButton_clicked();
     void on_HomeZDButton_clicked();
     void on_HomeZUButton_clicked();
-//    void on_FullBridgeTestButton_clicked();
+    //    void on_FullBridgeTestButton_clicked();
     void on_ProbePinsButton_clicked();
     void probestatus();
     void check_probepins(int i);
 
- //Drill
+    //Drill
     void on_SetDrillButton_clicked();
     void on_FullRunOutButton_clicked();
     void on_SpinMotorButton_clicked();
@@ -114,7 +114,7 @@ private slots:
     void on_RunOutButton_clicked();
     void on_NoiseButton_clicked();
 
- //Database
+    //Database
     void on_SearchButton_clicked();
     void on_SaveButton_clicked();
     void get_calibration(int i);
@@ -140,6 +140,8 @@ private slots:
     void on_TestProbe_Button_clicked();
 
     void probe_measurements(int i);
+
+    void on_ProbeSave_Button_clicked();
 
 private:
     Ui::MainWindow *ui;

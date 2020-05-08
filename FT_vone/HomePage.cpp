@@ -20,7 +20,7 @@ void MainWindow::on_ProbeButton_clicked()
 }
 void MainWindow::on_DatabaseButton_clicked()
 {
-   ui->stackedWidget->setCurrentIndex(4);
+    ui->stackedWidget->setCurrentIndex(4);
 }
 void MainWindow::on_HomeButton_clicked()
 {

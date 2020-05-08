@@ -33,12 +33,12 @@ void MainWindow::on_SearchButton_clicked()
         }
     }
     if(BridgeRButton && searchline!=NULL){
-       if(!qry->exec("select * from bridgeinfo where BSerial='"+searchline+"';")){
+        if(!qry->exec("select * from bridgeinfo where BSerial='"+searchline+"';")){
             qDebug()<<"error:" <<qry->lastError();
         }
     }
     else{
-      }
+    }
     model->setQuery(*qry);
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();
@@ -79,33 +79,55 @@ void MainWindow::get_calibration(int i)
         if(reply==QMessageBox::Save){
             on_SaveButton_clicked();
         }
-        else{
-        }
+        else{}
     }
     else{
         extractButton_clicked = false;
     }
 }
-
-void MainWindow::on_dbButton_clicked()
+void MainWindow::on_ViewGraphButton_clicked()
 {
-    //Initialize database connection to local server
-    db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
-    db.setDatabaseName("batch7");
-    db.setPort(3306);
-    db.setUserName("root");
-    db.setPassword("");
-    if(db.open()){
-        qDebug()<<"Connection to Database("<<db.databaseName()<<") Succesfull";
-        dbcom=true;
-        update_comstatus();
-    }
-    else{
-        qDebug()<<"error"<<db.lastError();
-        dbcom=false;
-    }
+    QMainWindow secwindow;
+    QChart *chart = new QChart();
+    QBarCategoryAxis *axisX = new QBarCategoryAxis();
+    QValueAxis *axisY = new QValueAxis();
+    QStringList categories;
+    QBarSeries *series = new QBarSeries();
+    QBarSet *set0 = new QBarSet("Pass");
+    QBarSet *set1 = new QBarSet("Fail");
+
+    *set0 << 10 << 20 << 30 ;
+    *set1 << 50 << 10 << 10 ;
+    series->append(set0);
+    series->append(set1);
+
+    categories<<"Bridge"<<"Drill"<<"Probe";
+    chart->addSeries(series);
+    chart->setTitle("Monthly Update");
+    chart->setAnimationOptions(QChart::SeriesAnimations);
+
+    axisX->append(categories);
+    chart->addAxis(axisX, Qt::AlignBottom);
+
+    axisY->setRange(0,60);
+    chart->addAxis(axisY, Qt::AlignLeft);
+    series->attachAxis(axisY);
+
+    chart->legend()->setVisible(true);
+    chart->legend()->setAlignment(Qt::AlignBottom);
+
+    QChartView *chartView = new QChartView(chart);
+    chartView->setRenderHint(QPainter::Antialiasing);
+
+
+    secwindow.resize(420,300);
+    secwindow.show();
+
+    //    setCentralWidget(chartView);
+    //    resize(420, 300);
+    //    show();
 }
+
 void MainWindow::on_sqlline_returnPressed()
 {
     QSqlQuery* qry = new QSqlQuery(db);

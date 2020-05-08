@@ -69,8 +69,8 @@ void MainWindow::on_NoiseButton_clicked()
 void MainWindow::on_clearD_Button_clicked()
 {
     ui->Drillother->setText("");
-     ui->noise_checkBox->setChecked(0);
-      ui->badrunout_checkBox->setChecked(0);
+    ui->noise_checkBox->setChecked(0);
+    ui->badrunout_checkBox->setChecked(0);
 }
 
 void MainWindow::on_DSaveButton_clicked()
