@@ -38,37 +38,43 @@ void MainWindow::on_HomeZUButton_clicked()
     sendcommand("M18\n");
 }
 void MainWindow::on_ProbePinsButton_clicked(){
-    sendcommand("M125\n");
+
     probepinsButton_clicked = true;
     firstrun=true;
     probemounted = false;
     probetriggered =false;
     probedisconnected = false;
+    sendcommand("M125\n");
+    sendcommand("M18\n");
 }
 void MainWindow:: probestatus()
 {
-    ui->progressBar->setMaximum(countdown*10);
+    ui->progressBar->setMaximum(countdown);
     ui->progressBar->setMinimum(0);
+  if(probemounted && probetriggered && probedisconnected){
 
-    if(probemounted && probetriggered && probedisconnected){
         ui->probeBrowser->setText("Probe Pogo Pin Passed!");
         probepinsButton_clicked = false;
-    }
-    else{
+        datas.clear();
+        delay(2);
+}
+  else{
         while(!probemounted || !probetriggered || !probedisconnected)
         {
             if(countdown<0){
+
                 ui->probeBrowser->setText("Probe Pogo Pin Failed!");
                 qDebug("error: Probe Not Detected.");
                 probepinsButton_clicked = false;
+                delay(1);
                 break;
             }
             else{
-                ui->progressBar->setValue(countdown*10);
+                ui->progressBar->setValue(countdown);
                 qDebug()<<countdown;
                 countdown--;
-                sendcommand("M125\n");
                 delay(1);
+                sendcommand("M125\n");
             }
         }
     }

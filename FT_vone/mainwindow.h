@@ -63,10 +63,10 @@ public:
     bool dbcom;
     int motorspeed;
     //Probe testing
-    bool probemounted=false;
-    bool probetriggered=false;
-    bool probedisconnected=false;
-    bool firstrun=false;
+    bool probemounted;
+    bool probetriggered;
+    bool probedisconnected;
+    bool firstrun;
     int countdown = 10;
     //Probe Page
     bool probetest_clicked;

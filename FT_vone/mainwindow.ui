@@ -95,13 +95,13 @@
      <number>5</number>
     </property>
     <property name="currentIndex">
-     <number>3</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="HomePage">
      <widget class="QPushButton" name="BridgeButton">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>50</x>
         <y>60</y>
         <width>131</width>
         <height>251</height>
@@ -312,6 +312,9 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+      <property name="format">
+       <string>%vs</string>
       </property>
      </widget>
      <widget class="QDialogButtonBox" name="buttonBox">

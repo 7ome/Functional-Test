@@ -18,3 +18,7 @@ write directly on mysql from database page
 logo icon
 
 https://doc.qt.io/qt-5/qtabwidget.html
+
+
+probe pogo pin(consistently failing)
+dump memory every step
