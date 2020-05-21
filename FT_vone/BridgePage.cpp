@@ -51,31 +51,21 @@ void MainWindow:: probestatus()
 {
     ui->progressBar->setMaximum(countdown);
     ui->progressBar->setMinimum(0);
-  if(probemounted && probetriggered && probedisconnected){
 
-        ui->probeBrowser->setText("Probe Pogo Pin Passed!");
-        probepinsButton_clicked = false;
-        datas.clear();
-        delay(2);
-}
-  else{
-        while(!probemounted || !probetriggered || !probedisconnected)
-        {
-            if(countdown<0){
-
-                ui->probeBrowser->setText("Probe Pogo Pin Failed!");
-                qDebug("error: Probe Not Detected.");
-                probepinsButton_clicked = false;
-                delay(1);
-                break;
-            }
-            else{
-                ui->progressBar->setValue(countdown);
-                qDebug()<<countdown;
-                countdown--;
-                delay(1);
-                sendcommand("M125\n");
-            }
+ while(!probemounted || !probetriggered || !probedisconnected)
+    {
+        if(countdown<0){
+            ui->probeBrowser->setText("Probe Pogo Pin Failed!");
+            qDebug("error: Probe Not Detected.");
+            probepinsButton_clicked = false;
+            delay(1);
+            break;
+        }
+        else{
+            ui->progressBar->setValue(countdown);
+            delay(1);
+            sendcommand("M125\n");
+            countdown--;
         }
     }
 }

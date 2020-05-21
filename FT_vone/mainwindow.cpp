@@ -46,6 +46,7 @@ void MainWindow::on_pushButton_clicked()
         }
         //Read Vone Values when Extract Button is clicked (in Database Page)
         if (extractButton_clicked){
+
             str.filter(datas);
             for (int i=0; i<str.length();i++){
                 get_calibration(i);
@@ -55,7 +56,14 @@ void MainWindow::on_pushButton_clicked()
         {
             str.filter(datas);
             for (int i=0; i<str.length();i++){
+                if(probemounted && probetriggered && probedisconnected){
+                       ui->probeBrowser->setText("Probe Pogo Pin Passed!");
+                       probepinsButton_clicked = false;
+                       break;
+               }
+                 else{
                 check_probepins(i);
+                }
             }
         }
         if(probetest_clicked){
