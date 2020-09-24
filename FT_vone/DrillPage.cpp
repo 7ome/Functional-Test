@@ -84,7 +84,7 @@ void MainWindow::on_DSaveButton_clicked()
         qDebug()<<"error:" <<qry->lastError();
     }
     else{
-        msgbox.information(nullptr,"Saved","Saved Succeesfull!");
+        msgbox.information(nullptr,"Saved","Saved Succeesfully!");
         qDebug()<<" Saved Successfully!"<<endl;
         on_clearD_Button_clicked();
     }
@@ -96,7 +96,7 @@ void MainWindow::on_DPassButton_clicked()
         qDebug()<<"error:" <<qry->lastError();
     }
     else{
-        msgbox.information(nullptr,"Saved","Saved Succeesfull!");
+        msgbox.information(nullptr,"Saved","Saved Succeesfully!");
         qDebug()<<" Saved Successfully!"<<endl;
         on_clearD_Button_clicked();
     }

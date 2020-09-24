@@ -23,7 +23,7 @@ void MainWindow::initialize_serialcom()
                 serialcom=true;
                 qDebug("Initializing Connection.....");
                 delay(2);
-                qDebug("Connection to serial succesfull");
+                qDebug("Connection to serial succesful");
             }
             else{
             }
@@ -41,7 +41,7 @@ void MainWindow::on_dbButton_clicked()
     db.setUserName("root");
     db.setPassword("");
     if(db.open()){
-        qDebug()<<"Connection to Database("<<db.databaseName()<<") Succesfull";
+        qDebug()<<"Connection to Database("<<db.databaseName()<<") Succesful";
         dbcom=true;
         update_comstatus();
     }
