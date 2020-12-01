@@ -1,4 +1,4 @@
-#include <mainwindow.h>
+#include <.\headers\mainwindow.h>
 #include <ui_mainwindow.h>
 #include <QDebug>
 
@@ -37,8 +37,7 @@ void MainWindow::on_SearchButton_clicked()
             qDebug()<<"error:" <<qry->lastError();
         }
     }
-    else{
-    }
+    else{ }
     model->setQuery(*qry);
     ui->tableView->setModel(model);
     ui->tableView->resizeColumnsToContents();

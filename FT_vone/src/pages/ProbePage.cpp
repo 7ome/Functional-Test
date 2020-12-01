@@ -1,4 +1,4 @@
-#include <mainwindow.h>
+#include <.\headers\mainwindow.h>
 #include <ui_mainwindow.h>
 #include <QDebug>
 
@@ -57,6 +57,5 @@ void MainWindow::on_ProbeSave_Button_clicked()
             ui->Probeother->clear();
         }
     }
-    else{
-    }
+    else{}
 }
